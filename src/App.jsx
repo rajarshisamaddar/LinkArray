@@ -2,7 +2,7 @@ function App() {
   return (
     <>
       <p className="text-amber-300">
-        Click on the Vite and React logos to learn more
+        Hello this is soumayadip 
       </p>
     </>
   );
