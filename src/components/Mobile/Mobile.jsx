@@ -1,59 +1,108 @@
 import React from "react";
-import MobileFrame from "/framework-8233851.svg";
-import { useState, useEffect } from "react";
-import UserImage from "/avatar13.jpg";
+import MobileFrame from "../../assets/images/illustration-phone-mockup.svg";
+import UserImage from "../../assets/images/avatar13.jpg";
+import { FaFacebookF } from "react-icons/fa";
+import { FaArrowRight } from "react-icons/fa6";
 const Mobile = () => {
-  const [isMobile, setIsMobile] = useState(false);
-  const checkMobile = () => {
-    setIsMobile(window.innerWidth <= 991);
-  };
+  const data = [
+    {
+      id: 1,
+      icon: FaFacebookF,
+      p: "Facebook",
+    },
 
-  useEffect(() => {
-    checkMobile();
+    {
+      id: 2,
+      icon: FaFacebookF,
+      p: "Facebook",
+    },
 
-    window.addEventListener("resize", checkMobile);
-    return () => {
-      window.removeEventListener("resize", checkMobile);
-    };
-  });
+    {
+      id: 3,
+      icon: FaFacebookF,
+      p: "Facebook",
+    },
+
+    {
+      id: 4,
+      icon: FaFacebookF,
+      p: "Facebook",
+    },
+
+    {
+      id: 5,
+      icon: FaFacebookF,
+      p: "Facebook",
+    },
+
+    {
+      id: 6,
+      icon: FaFacebookF,
+      p: "Facebook",
+    },
+    {
+      id: 7,
+      icon: FaFacebookF,
+      p: "Facebook",
+    },
+  ];
+
+  const maxVisibleItems = 6;
+  const visibleItems = data.slice(0, maxVisibleItems);
   return (
     <>
-      {isMobile ? (
-        ""
-      ) : (
-        <div className="bg-white px-[4rem] py-[4rem] flex items-center justify-center mt-[1.8rem] rounded-[1rem] ">
-          <div className="h-[100%] m-[2rem] flex-1 relative overflow-hidden">
+      <div className="bg-white px-[4rem] py-[4rem] flex items-center justify-center mt-[1.8rem] rounded-[1rem] max-h-[115vh] ">
+        <div className="h-[100%] m-[2rem] flex-1 relative overflow-hidden">
+          <div className="flex justify-center h-[100%]">
             <img src={MobileFrame} alt="" className="h-[100%]" />
-            <div className="text-black absolute w-[90%] top-[12%] left-[5%] right[5%] m-[0,auto]">
-              <div className="flex justify-center">
-                <img
-                  src={UserImage}
-                  alt=""
-                  className="rounded-full h-[7rem] w-[7rem] border-[.3rem] border-blue-700"
-                />
-              </div>
+          </div>
+          <div className="text-black absolute w-[90%] top-[12%] left-[5%] right[5%] m-[0,auto]">
+            <div className="flex justify-center">
+              <img
+                src={UserImage}
+                alt=""
+                className="rounded-full h-[7rem] w-[7rem] border-[.3rem] border-blue-700"
+              />
+            </div>
 
-              <div>
-                <h2 className="mt-[1rem] font-bold text-gray-500 text-center text-[1.1rem]">
-                  Jhon Deo
-                </h2>
+            <div>
+              <h2 className="mt-[1rem] font-bold text-gray-500 text-center text-[1.1rem]">
+                Jhon Deo
+              </h2>
 
-                <p className="mt-[.2rem] text-gray-800 text-center text-[.7rem]">
-                  soumayadipsaha2002@gmail.com
-                </p>
-              </div>
+              <p className="mt-[.2rem] text-gray-800 text-center text-[.7rem]">
+                soumayadipsaha2002@gmail.com
+              </p>
+            </div>
 
-              <div>
-                <ul>
-                    <li>
-                       
-                    </li>
-                </ul>
-              </div>
+            <div className="mt-[4rem] overflow-hidden mb-[-10rem]">
+              <ul>
+                {visibleItems.map((Item) => (
+                  <li
+                    className="flex gap-x-[.7rem] mt-[.4rem] items-center justify-between bg-black text-white w-[90%] m-auto py-[.5rem] px-[1.5rem]
+                      rounded-lg text-[16px]"
+                    key={Item.id}
+                  >
+                    <div className="flex gap-x-[.3rem] items-center">
+                      <Item.icon className="text-[16px]" />
+                      <p>{Item.p}</p>
+                    </div>
+                    <div>
+                      <FaArrowRight />
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <ul>
+                <li></li>
+              </ul>
             </div>
           </div>
         </div>
-      )}
+      </div>
     </>
   );
 };
