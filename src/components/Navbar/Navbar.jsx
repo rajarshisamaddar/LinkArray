@@ -1,6 +1,6 @@
 import React from "react";
-import Logo from "/logo.svg";
-import Logo_Small from "/logo-small.svg";
+import Logo from "../../assets/images/logo.svg";
+import Logo_Small from "../../assets/images/logo-small.svg";
 import { Link } from "react-router-dom";
 import { BiLink } from "react-icons/bi";
 import { BiUserCircle } from "react-icons/bi";
@@ -28,7 +28,7 @@ const Navbar = () => {
       <div className="flex gap-x-[1.5rem] font-bold">
         <Link
           to=""
-          className="flex gap-x-[.2rem] items-center bg-gray-200 text-blue-600 text-[16px]
+          className="flex gap-x-[.2rem] items-center bg-gray-200 text-indigo-600 text-[16px]
         py-[.7rem] px-[1.5rem] rounded-lg"
         >
              <BiLink className='text-[1.3rem]' /> 
@@ -38,14 +38,14 @@ const Navbar = () => {
         <Link
           to=""
           className="flex gap-x-[.2rem] items-center text-[16px] text-gray-500
-        py-[.7rem] hover:text-blue-600"
+        py-[.7rem] hover:text-indigo-600"
         >
           <BiUserCircle className="text-[1.4rem]" /> 
           {isMobile ? "" : <h3>Profile Details</h3>}
         </Link>
       </div>
-      <div className={`py-[.7rem] ${isMobile ? 'px-[.9rem]' : 'px-[1.8rem]'} border-blue-800 border-[1.5px] rounded-lg
-       hover:bg-violet-200 cursor-pointer text-blue-800 font-bold ${isMobile ? 'text-[1.4rem]' : 'text-[16px]'}`}>
+      <div className={`py-[.7rem] ${isMobile ? 'px-[.9rem]' : 'px-[1.8rem]'} border-blue-700 border-[1.5px] rounded-lg
+       hover:bg-violet-200 cursor-pointer text-blue-700 font-bold ${isMobile ? 'text-[1.4rem]' : 'text-[16px]'}`}>
         <Link to="">
             {isMobile ? <AiOutlineEye /> : <h3>Preview</h3>}
         </Link>

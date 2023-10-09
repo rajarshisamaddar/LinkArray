@@ -8,8 +8,10 @@ export default {
     extend: {
     },
     screens: {
-      'sm' : {'min':'300px' , 'max':'500px'}
-    }
+      'sm' : {'min':'300px' , 'max':'500px'},
+      'mb' : {'min':'600px' , 'max':'991px'}
+    },
+
   },
   plugins: [],
 }
