@@ -20,8 +20,12 @@ const Home = () => {
   return (
     <>
       <Navbar />
-      <div className={`grid ${isMobile ? '' : 'grid-cols-[31.5rem,auto]'} gap-x-[2rem] w-[96.5%] m-auto mb-[2rem]`}>
-        {isMobile ? '' : <Mobile />}
+      <div
+        className={`grid ${
+          isMobile ? "" : "grid-cols-[31.5rem,auto]"
+        } gap-x-[2rem] w-[96.5%] m-auto mb-[2rem]`}
+      >
+        {isMobile ? "" : <Mobile />}
         <Link />
       </div>
     </>

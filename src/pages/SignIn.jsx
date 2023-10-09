@@ -1,15 +1,35 @@
-import React from "react";
 import Logo from "../assets/images/logo.svg";
+import React, { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../utils/AuthContext";
 
 function SignIn() {
+  const { user, loginUser } = useAuth();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (user) {
+      navigate("/");
+    }
+  });
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const userInfo = { email, password };
+    loginUser(userInfo);
+  };
+
   return (
-    <form class="flex bg-gradient-to-b from-violet-100 to-gray-50 text-gray-500 h-screen">
+    <form
+      class="flex bg-gradient-to-b from-violet-100 to-gray-50 text-gray-500 h-screen"
+      onSubmit={handleSubmit}
+    >
       <div class="m-auto border p-8 bg-white/30 rounded-2xl backdrop-blur-lg">
         <img className="mx-auto" src={Logo} width="150px"></img>
         <h3 className="font-semibold text-xl mt-8">Sign In</h3>
-        <p className="text-lg mt-1">
-          Enter your details below to get back
-        </p>
+        <p className="text-lg mt-1">Enter your details below to get back</p>
 
         <div className="flex flex-col mt-4">
           <label className="text-sm font-thin">Email address</label>
@@ -20,6 +40,10 @@ function SignIn() {
             type="email"
             pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
             required
+            value={email}
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}
           />
         </div>
 
@@ -32,6 +56,10 @@ function SignIn() {
             placeholder="Password"
             pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
             title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters"
+            value={password}
+            onChange={(e) => {
+              setPassword(e.target.value);
+            }}
           />
         </div>
 

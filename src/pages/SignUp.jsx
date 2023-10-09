@@ -1,9 +1,39 @@
-import React from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Logo from "../assets/images/logo.svg";
+import { useAuth } from "../utils/AuthContext";
 
 function SignUp() {
+  const navigate = useNavigate();
+  const { registerUser, user } = useAuth();
+  const [username, setUsername] = useState();
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+  const [password2, setPassword2] = useState();
+
+  useEffect(() => {
+    if (user) {
+      navigate("/");
+    }
+  });
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (password === password2) {
+      const userInfo = { username, email, password, password2 };
+      registerUser(userInfo);
+    } else {
+      alert("Password mismatch ☹️");
+      setPassword("");
+      setPassword2("");
+    }
+  };
+
   return (
-    <form class="flex bg-gradient-to-b from-violet-100 to-gray-50 text-gray-500 h-screen">
+    <form
+      class="flex bg-gradient-to-b from-violet-100 to-gray-50 text-gray-500 h-screen"
+      onSubmit={handleSubmit}
+    >
       <div class="m-auto border p-8 bg-white/30 rounded-2xl backdrop-blur-lg">
         <img className="mx-auto" src={Logo} width="150px"></img>
         <h3 className="font-semibold text-xl mt-8">Create account</h3>
@@ -16,10 +46,14 @@ function SignUp() {
           <input
             title="Username can be 5 to 20 alpha characters"
             className="border rounded-md h-10 p-4 mt-1 bg-transparent focus:outline-indigo-600"
-            placeholder="username"
+            placeholder="rahulinks"
             type="username"
             pattern="[A-Za-z0-9]{5,20}"
             required
+            value={username}
+            onChange={(e) => {
+              setUsername(e.target.value);
+            }}
           />
         </div>
 
@@ -32,6 +66,10 @@ function SignUp() {
             type="email"
             pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
             required
+            value={email}
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}
           />
         </div>
 
@@ -44,6 +82,10 @@ function SignUp() {
             placeholder="Password"
             pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
             title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters"
+            value={password}
+            onChange={(e) => {
+              setPassword(e.target.value);
+            }}
           />
         </div>
 
@@ -56,6 +98,10 @@ function SignUp() {
             placeholder="Confirm password"
             type="password"
             required
+            value={password2}
+            onChange={(e) => {
+              setPassword2(e.target.value);
+            }}
           />
         </div>
 
