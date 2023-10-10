@@ -2,7 +2,7 @@ import React from "react";
 import EmptyImage from "../../assets/images/illustration-empty.svg";
 const Empty = () => {
   return (
-    <div className="bg-[#f3f4f6] flex flex-col justify-center items-center p-[2rem] mt-[1.5rem] rounded-[.6rem] sm:p-[.5rem]">
+    <div className="bg-[#fafafa] flex flex-col justify-center items-center p-[2rem] mt-[1.5rem] rounded-[.6rem] sm:p-[.5rem]">
       <div>
         <img src={EmptyImage} alt="" />
       </div>
