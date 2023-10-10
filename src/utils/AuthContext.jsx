@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect, useContext } from "react";
-import { account } from "../appwriteConfig";
+import { account } from "../lib/appwriteConfig";
 import { useNavigate } from "react-router-dom";
 import { ID } from "appwrite";
 
@@ -12,7 +12,6 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    // setLoading(false)
     checkUserStatus();
   }, []);
 
