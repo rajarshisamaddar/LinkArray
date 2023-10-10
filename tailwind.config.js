@@ -8,8 +8,13 @@ export default {
     extend: {
     },
     screens: {
-      'sm' : {'min':'300px' , 'max':'500px'},
-      'mb' : {'min':'600px' , 'max':'991px'}
+      'lg': {'max': '1024px'},
+      // => @media (max-width: 1023px) { ... }
+
+      'mb': {'max': '991px'},
+      // => @media (max-width: 767px) { ... }
+
+      'sm': {'max': '639px'},
     },
 
   },
