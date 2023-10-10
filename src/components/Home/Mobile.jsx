@@ -39,13 +39,13 @@ const Mobile = ({ data, isProfile = false }) => {
                 <ul>
                   {visibleItems.map((Item) => (
                     <li
-                      className="flex gap-x-[.7rem] mt-[.4rem] items-center justify-between bg-black text-white w-[90%] lg:w-[80%] m-auto py-[.5rem] px-[1.5rem]
+                      className="flex gap-x-[.7rem] mt-[.4rem] items-center justify-between bg-gray-300 text-white w-[90%] lg:w-[80%] m-auto py-[.5rem] px-[1.5rem]
                     rounded-lg text-[16px] lg:last:hidden"
                       key={Item.id}
                     >
                       <div className="flex gap-x-[.3rem] items-center">
-                        <Item.icon className="text-[16px]" />
-                        <p>{Item.p}</p>
+                        {/* <Item.icon className="text-[16px]" /> */}
+                        {/* <p></p> */}
                       </div>
                       <div>
                         <FaArrowRight />

@@ -7,7 +7,7 @@ const ColorPicker = () => {
   const handleChangeComplete = (color) => {
     setBackground(color.hex);
   };
-  console.log(background)
+  //console.log(background)
 
   return (
     <HuePicker color={background} width="5" onChangeComplete={handleChangeComplete} />

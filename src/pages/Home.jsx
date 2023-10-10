@@ -3,50 +3,9 @@ import Navbar from "../components/Navbar/Navbar";
 import Mobile from "../components/Home/Mobile";
 import Link from "../components/Home/Link";
 import { FaFacebookF } from "react-icons/fa";
+import {useSelector} from 'react-redux';
 const Home = () => {
-  const data = [
-    {
-      id: 1,
-      icon: FaFacebookF,
-      p: "Facebook",
-    },
-
-    {
-      id: 2,
-      icon: FaFacebookF,
-      p: "Facebook",
-    },
-
-    {
-      id: 3,
-      icon: FaFacebookF,
-      p: "Facebook",
-    },
-
-    {
-      id: 4,
-      icon: FaFacebookF,
-      p: "Facebook",
-    },
-
-    {
-      id: 5,
-      icon: FaFacebookF,
-      p: "Facebook",
-    },
-
-    {
-      id: 6,
-      icon: FaFacebookF,
-      p: "Facebook",
-    },
-    {
-      id: 7,
-      icon: FaFacebookF,
-      p: "Facebook",
-    },
-  ];
-
+  const links = useSelector((state)=>state.global.links);
   return (
     <>
       <Navbar isHome />
@@ -54,7 +13,7 @@ const Home = () => {
         className={`grid grid-cols-[31.5rem,auto]
         gap-x-[2rem] w-[96.5%] m-auto mb-[2rem] mb:grid-cols-1 sm:grid-cols-1`}
       >
-        <Mobile data={data} />
+        <Mobile data={links} />
         <Link heading="Customize your links" description="Add/edit/remove links below and then share all your profiles with the
           world!" />
       </div>
