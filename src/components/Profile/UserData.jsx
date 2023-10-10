@@ -29,13 +29,13 @@ const UserData = () => {
       <div className="bg-[#fafafa] h-[13rem] sm:h-auto lg:h-auto grid items-center px-[1.5rem] lg:py-[1rem] rounded-lg">
         <div className="grid grid-cols-[6.7rem,auto] gap-x-[2rem] items-center sm:grid-cols-1 lg:grid-cols-1 gap-y-[1rem]">
             <label htmlFor="fname" className="text-[.8rem] text-gray-600">Firstname</label>
-            <input type="text" name="fname" placeholder=".e.g. Samaddar" className="w-[100%] p-[10px] border-[1px] border-gray-400
+            <input type="text" name="fname" placeholder=".e.g. Rajarshi" className="w-[100%] p-[10px] border-[1px] border-gray-400
             rounded-lg outline-[1px] outline-indigo-600" />
         </div>
 
         <div className="grid grid-cols-[6.7rem,auto] gap-x-[2rem] items-center sm:grid-cols-1 gap-y-[1rem] lg:grid-cols-1">
             <label htmlFor="lname" className="text-[.8rem] text-gray-600">Lastname</label>
-            <input type="text" name="lname" placeholder=".e.g. Rajarshi" className="w-[100%] p-[10px] border-[1px] border-gray-400
+            <input type="text" name="lname" placeholder=".e.g. Samaddar" className="w-[100%] p-[10px] border-[1px] border-gray-400
             rounded-lg outline-[1px] outline-indigo-600" />
         </div>
 

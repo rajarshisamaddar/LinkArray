@@ -1,5 +1,6 @@
 import React from "react";
 import { LuEqual } from "react-icons/lu";
+import ColorPicker from "../Profile/ColorPicker";
 const Form = () => {
   const array = [{ id: 1 }, { id: 2 }, { id: 3 }];
   return (
@@ -38,14 +39,13 @@ const Form = () => {
               />
             </div>
 
-            <div className="w-[20%]">
-              <label htmlFor="color" className="text-[15px] text-gray-500 mb-[.8rem]">choose color</label>
-              <input
-                type="color"
-                name="color"
-                id=""
-                className="w-[100%] rounded-lg bg-transparent"
-              />
+            <div className="w-[100%] ">
+              <label htmlFor="color" className="text-[15px] text-gray-500 mb-[.8rem]">choose background</label>
+              <ColorPicker />
+            </div>
+
+            <div className="w-[30%] lg:w-[50%]">
+              <button className="my-[.5rem] bg-violet-400 px-[1rem] py-[.5rem] h-fit text-[15px] text-white font-bold rounded-lg">Choose icon</button>
             </div>
           </div>
         </div>
