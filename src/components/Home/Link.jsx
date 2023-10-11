@@ -8,13 +8,9 @@ import { useDispatch, useSelector } from "react-redux";
 const Link = ({ heading, description, isProfile = false }) => {
   const dispatch = useDispatch();
   const links = useSelector((state) => state.global.links);
-<<<<<<< HEAD
-  const handleFormSubmit = (formData) => {
-=======
   const [inputValues, setInputValues] = useState({ platform: "", linkUrl: "" });
 
   const addNewLink = (formData) => {
->>>>>>> 061c862962f842d6cdb96dda800bbac27b981e3a
     const id = links.length + 1;
     const count = links.length + 1;
     const newLink = {
@@ -26,6 +22,7 @@ const Link = ({ heading, description, isProfile = false }) => {
 
     console.log(newLink);
     dispatch(addLink(newLink));
+    setInputValues({ platform: "", linkUrl: "" });
   };
 
   const handleFormSubmit = (formData) => {
