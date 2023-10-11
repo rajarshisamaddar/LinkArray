@@ -2,8 +2,10 @@ import React from "react";
 import MobileFrame from "../../assets/images/illustration-phone-mockup.svg";
 import UserImage from "../../assets/images/avatar13.jpg";
 import { FaArrowRight } from "react-icons/fa6";
-
+import { useState } from "react";
+import { Link } from "react-router-dom";
 const Mobile = ({ data, isProfile = false }) => {
+  //console.log(data.color)
   const maxVisibleItems = 6;
   const visibleItems = data.slice(0, maxVisibleItems);
   return (
@@ -39,15 +41,17 @@ const Mobile = ({ data, isProfile = false }) => {
                 <ul>
                   {visibleItems.map((Item) => (
                     <li
-                      className="flex gap-x-[.7rem] mt-[.4rem] items-center justify-between bg-gray-300 text-white w-[90%] lg:w-[80%] m-auto py-[.5rem] px-[1.5rem]
-                    rounded-lg text-[16px] lg:last:hidden"
+                      className={`flex gap-x-[.7rem] mt-[.4rem] items-center justify-between 
+                      text-white w-[90%] lg:w-[80%] m-auto py-[.5rem] px-[1.5rem]
+                    rounded-lg text-[16px] lg:last:hidden`}
+                    style={Item.color ? { backgroundColor: Item.color } : {backgroundColor:'#ccc'}}
                       key={Item.id}
                     >
                       <div className="flex gap-x-[.3rem] items-center">
                         {/* <Item.icon className="text-[16px]" /> */}
-                        {/* <p></p> */}
+                        <Link to={Item.link} >{Item.platform}</Link>
                       </div>
-                      <div>
+                      <div >
                         <FaArrowRight />
                       </div>
                     </li>

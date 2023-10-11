@@ -1,86 +1,71 @@
 import React, { useState } from "react";
-import { LuEqual } from "react-icons/lu";
-import ColorPicker from "../Profile/ColorPicker";
-import { useSelector, useDispatch } from "react-redux";
-import { removeLink } from "../../redux/slices/global/globalSlice";
-const Form = ({ item }) => {
-  const links = useSelector((state) => state.global.links);
+import Empty from "./Empty";
+import UserData from "../Profile/UserData";
+import Link from "./Link";
+import { addLink, updateLink } from "../../redux/slices/global/globalSlice";
+import { useDispatch, useSelector } from "react-redux";
+
+const Form = ({ heading, description, isProfile = false }) => {
   const dispatch = useDispatch();
-  const [platform, setPlatform] = useState("");
-  const [linkUrl, setLinkUrl] = useState("");
-  const handleSubmit = () => {
-    const formData = {
-      platform,
-      linkUrl,
+  const links = useSelector((state) => state.global.links);
+
+  const addNewLink = () => {
+    const id = links.length + 1;
+    const count = links.length + 1;
+    const newLink = {
+      id: id,
+      count: count,
+      platform: "",
+      link: "",
+      color:""
     };
-    // onFormSubmit(formData);
-    setPlatform("");
-    setLinkUrl("");
+    dispatch(addLink(newLink));
   };
+
   return (
     <div
-      className="h-auto bg-[#fafafa] mt-[.8rem] first:mt-[0] p-[1rem] rounded-lg"
-      key={item.id}
+      className="bg-white h-[auto] mt-[1.8rem] rounded-[1rem] py-[1.4rem]  
+      sm:w-[96.5%] sm:m-auto sm:mt-[1rem] mb:w-[100%] mb:mt-[1rem]  mb:m-auto"
     >
-      <div className="flex justify-between">
-        <h3 className="flex gap-x-[.5rem] items-center font-bold text-gray-500">
-          <LuEqual /> Link #{item.id}
-        </h3>
-        <h2
-          className="cursor-pointer"
-          onClick={() => dispatch(removeLink(item))}
-        >
-          Remove
-        </h2>
+      <div className="w-[90%] m-auto">
+        <h1 className="text-[32px] text-gray-700 font-bold sm:text-[24px]">
+          {heading}
+        </h1>
+        <p className="text-[16px] text-gray-600 mt-[1rem] sm:mt-[0]">
+          {description}
+        </p>
+        {isProfile ? (
+          <UserData />
+        ) : (
+          <div>
+            <div
+              className="mt-[2rem] w-[100%] hover:bg-violet-200 text-center border-[1.5px] border-blue-700 text-indigo-600
+        font-bold text-[16px] py-[.8rem] rounded-[.6rem]"
+            >
+              <button className="w-[100%]" onClick={addNewLink}>
+                + Add new link
+              </button>
+            </div>
+            {links.length === 0 ? (
+              <Empty />
+            ) : (
+              <div className="h-96 overflow-y-auto mb:h-auto mt-[2rem] sm:w-[100%] pr-[2rem] mb:pr-0">
+                {links.map((item) => (
+                  <Link key={item.id} item={item} />
+                ))}
+              </div>
+            )}
+          </div>
+        )}
       </div>
-      <div className="mt-[1rem]">
-        <div className="w-[100%]">
-          <label htmlFor="platform" className="text-[.8rem] text-gray-500">
-            Platform
-          </label>
-          <input
-            type="text"
-            className="w-[100%] border-[1.5px] border-gray-300 outline-none py-[.6rem] px-[1rem] rounded-lg my-[.5rem]"
-            placeholder=".e.g Github"
-            name="platform"
-            value={platform}
-            onChange={(e) => setPlatform(e.target.value)}
-          />
-        </div>
-
-        <div className="w-[100%]">
-          <label htmlFor="link" className="text-[.8rem] text-gray-500">
-            Link
-          </label>
-          <input
-            type="text"
-            name="link"
-            value={linkUrl}
-            onChange={(e) => setLinkUrl(e.target.value)}
-            className="w-[100%] border-[1.5px] border-gray-300 outline-none py-[.6rem] px-[1rem] rounded-lg my-[.5rem]"
-            placeholder=".e.g https://github.com/jhon"
-          />
-        </div>
-
-        <div className="w-[100%] ">
-          <label
-            htmlFor="color"
-            className="text-[15px] text-gray-500 mb-[.8rem]"
-          >
-            choose background
-          </label>
-          <ColorPicker />
-        </div>
-
-        <div className="w-[30%] lg:w-[50%]">
-          <button
-            className="my-[.5rem] bg-violet-400 px-[1rem] py-[.5rem] h-fit text-[15px] text-white font-bold rounded-lg
-              "
-            onClick={handleSubmit}
-          >
-            Choose icon
-          </button>
-        </div>
+      <p className="mt-[2rem] border-t-[.1rem] border-gray-300"></p>
+      <div className="flex justify-end mt-[2.4rem] w-[90%] m-auto sm:w-[80%]">
+        <button
+          className="bg-indigo-600 w-fit sm:w-[100%] px-[2.5rem] py-[.7rem] text-[16px] text-white rounded-[.6rem] 
+        hover:bg-violet-300"
+        >
+          Save
+        </button>
       </div>
     </div>
   );

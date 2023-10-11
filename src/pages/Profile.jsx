@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "../components/Navbar/Navbar";
 import Mobile from "../components/Home/Mobile";
-import Link from "../components/Home/Link";
+import Form from "../components/Home/Form";
 import { FaFacebookF } from "react-icons/fa";
 const Profile = () => {
     const data = [
@@ -54,7 +54,7 @@ const Profile = () => {
         gap-x-[2rem] w-[96.5%] m-auto mb-[2rem] mb:grid-cols-1 sm:grid-cols-1`}
       >
         <Mobile data={data} isProfile />
-        <Link isProfile heading="Profile Details" description="Add your details to create a personal touch to your profile." />
+        <Form isProfile heading="Profile Details" description="Add your details to create a personal touch to your profile." />
       </div>
     </>
   );

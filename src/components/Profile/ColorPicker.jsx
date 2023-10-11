@@ -1,16 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import { HuePicker } from "react-color";
 
-const ColorPicker = () => {
-  const [background, setBackground] = useState("#fff");
-
+const ColorPicker = ({color, onChange}) => {
   const handleChangeComplete = (color) => {
-    setBackground(color.hex);
+    onChange(color);
   };
-  //console.log(background)
+
 
   return (
-    <HuePicker color={background} width="5" onChangeComplete={handleChangeComplete} />
+    <HuePicker color={color} width="5" onChangeComplete={handleChangeComplete} />
   );
 };
 
