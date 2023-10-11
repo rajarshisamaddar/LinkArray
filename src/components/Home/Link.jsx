@@ -4,12 +4,12 @@ import ColorPicker from "../Profile/ColorPicker";
 import { useDispatch } from "react-redux";
 import { removeLink } from "../../redux/slices/global/globalSlice";
 import { updateLink } from "../../redux/slices/global/globalSlice";
+import Icon from "./Icon";
 const Link = ({ item }) => {
   const dispatch = useDispatch();
   const [platformName, setPlatformName] = useState("");
   const [linkUrl, setLinkUrl] = useState("");
   const [color, setColor] = useState("#fff");
-
   return (
     <div
       className="h-auto bg-[#fafafa] mt-[.8rem] first:mt-[0] p-[1rem] rounded-lg"
@@ -63,6 +63,7 @@ const Link = ({ item }) => {
           />
         </div>
 
+<<<<<<< HEAD
         <div className="w-[100%] ">
           <label htmlFor="link" className="text-[.8rem] text-gray-500">
             Choose bg-color
@@ -84,7 +85,27 @@ const Link = ({ item }) => {
           >
             Choose icon
           </button>
+=======
+        <div className="w-[100%]">
+          <label
+            htmlFor="color"
+            className="text-[15px] text-gray-500 mb-[.8rem]"
+          >
+            Choose background
+          </label>
+          <div className="mt-2 mb-2">
+            <ColorPicker
+              color={color}
+              onChange={(e) => {
+                setColor(e);
+                const updateColor = { ...item, color: e.hex };
+                dispatch(updateLink(updateColor));
+              }}
+            />
+          </div>
+>>>>>>> 8f34a235d682feaa72ce67eed6ecaa685beb6c7f
         </div>
+        <Icon />
       </div>
     </div>
   );
