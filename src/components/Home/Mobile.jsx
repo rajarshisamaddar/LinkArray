@@ -4,6 +4,7 @@ import UserImage from "../../assets/images/avatar.png";
 import { FaArrowRight } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import * as ReactFaIcons from "react-icons/fa6";
 const Mobile = ({ data }) => {
   const user = useSelector((state) => state.global.user);
 
@@ -41,19 +42,23 @@ const Mobile = ({ data }) => {
               <ul>
                 {visibleItems.map((Item) => (
                   <li
-                    className={`flex gap-x-[.7rem] mt-[.4rem] items-center justify-between 
-                      text-white w-[90%] lg:w-[80%] m-auto py-[.5rem] px-[1.5rem]
-                    rounded-lg text-[16px] lg:last:hidden`}
+                    className={`flex gap-x-[.7rem] mt-[.4rem] items-center  justify-between 
+                      text-white w-[90%] lg:w-[80%] h-[100%] m-auto py-[.5rem] px-[1.5rem]
+                    rounded-lg text-[16px] lg:last:hidden cursor-pointer`}
                     style={
                       Item.color
                         ? { backgroundColor: Item.color }
                         : { backgroundColor: "#ccc" }
                     }
                     key={Item.id}
+                    onClick={() => (location.href = `${Item.link}`)}
                   >
                     <div className="flex gap-x-[.3rem] items-center">
-                      {/* <Item.icon className="text-[16px]" /> */}
-                      <Link to={Item.link}>{Item.platform}</Link>
+                        {ReactFaIcons[Item.icon] &&
+                          ReactFaIcons[Item.icon]({
+                            className: "text-[18px] ",
+                          })}
+                      <Link className="text-[18px]">{Item.platform}</Link>
                     </div>
                     <div>
                       <FaArrowRight />

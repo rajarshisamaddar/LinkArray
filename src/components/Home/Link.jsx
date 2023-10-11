@@ -67,25 +67,18 @@ const Link = ({ item }) => {
           <label htmlFor="link" className="text-[.8rem] text-gray-500">
             Choose bg-color
           </label>
-          <ColorPicker
-            color={color}
-            onChange={(e) => {
-              setColor(e);
-              const updateColor = { ...item, color: e.hex };
-              dispatch(updateLink(updateColor));
-            }}
-          />
+          <div className="mt-[.5rem] mb-[.5rem]">
+            <ColorPicker
+              color={color}
+              onChange={(e) => {
+                setColor(e);
+                const updateColor = { ...item, color: e.hex };
+                dispatch(updateLink(updateColor));
+              }}
+            />
+          </div>
         </div>
-
-        <div className="w-[30%] lg:w-[50%]">
-          <button
-            className="my-[.5rem] bg-violet-400 px-[1rem] py-[.5rem] h-fit text-[15px] text-white font-bold rounded-lg
-              "
-          >
-            Choose icon
-          </button>
-        </div>
-        <Icon />
+        <Icon item={item} />
       </div>
     </div>
   );
