@@ -75,8 +75,11 @@ const Form = ({ onFormSubmit }) => {
             </div>
 
             <div className="w-[30%] lg:w-[50%]">
-              <button className="my-[.5rem] bg-violet-400 px-[1rem] py-[.5rem] h-fit text-[15px] text-white font-bold rounded-lg
-              " onClick={handleSubmit}>
+              <button
+                className="my-[.5rem] bg-violet-400 px-[1rem] py-[.5rem] h-fit text-[15px] text-white font-bold rounded-lg
+              "
+                onClick={handleSubmit}
+              >
                 Choose icon
               </button>
             </div>
