@@ -4,14 +4,12 @@ import ColorPicker from "../Profile/ColorPicker";
 import { useSelector, useDispatch } from "react-redux";
 import { removeLink } from "../../redux/slices/global/globalSlice";
 import { updateLink } from "../../redux/slices/global/globalSlice";
-import { RxCross2 } from "react-icons/rx";
+import Icon from "./Icon";
 const Link = ({ item }) => {
   const dispatch = useDispatch();
   const [platformName, setPlatformName] = useState("");
   const [linkUrl, setLinkUrl] = useState("");
   const [color, setColor] = useState("#fff");
-  const [showIcon, setShowIcon] = useState(false);
-
   return (
     <div
       className="h-auto bg-[#fafafa] mt-[.8rem] first:mt-[0] p-[1rem] rounded-lg"
@@ -83,30 +81,7 @@ const Link = ({ item }) => {
             />
           </div>
         </div>
-
-        <div className="w-[30%] lg:w-[50%]">
-          <button
-            className="my-[.5rem] bg-violet-400 px-[1rem] py-[.5rem] h-fit text-[15px] text-white font-bold rounded-lg
-              "
-            onClick={(e) => setShowIcon(true)}
-          >
-            Choose icon
-          </button>
-          <div
-            className={`bg-gray-200 fixed h-[70%] ${
-              showIcon ? "visible opacity-1" : "hidden opacity-0"
-            } transition-opacity ease-in-out delay-200 w-[50%] top-1/2 px-[2rem] py-[1.5rem] rounded-lg shadow-xl left-1/2 transform -translate-x-1/2 -translate-y-1/2`}
-          >
-            <div
-              className="absolute right-[1rem] top-[1rem] text-[1.6rem] text-indigo-800 font-bold cursor-pointer bg-violet-200
-            rounded-full p-[.5rem]"
-              onClick={(e) => setShowIcon(false)}
-            >
-              <RxCross2 />
-            </div>
-            hello
-          </div>
-        </div>
+        <Icon />
       </div>
     </div>
   );
