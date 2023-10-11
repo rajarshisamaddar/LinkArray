@@ -8,18 +8,12 @@ const Form = ({ onFormSubmit }) => {
   const dispatch = useDispatch();
   const [platform, setPlatform] = useState("");
   const [linkUrl, setLinkUrl] = useState("");
-
   const handleSubmit = () => {
-    // Create an object with the input field values
     const formData = {
       platform,
       linkUrl,
     };
-
-    // Call the callback function to send the data to the parent component
     onFormSubmit(formData);
-
-    // Clear the input fields
     setPlatform("");
     setLinkUrl("");
   };
