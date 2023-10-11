@@ -44,7 +44,6 @@ const Mobile = ({ data }) => {
                     className={`flex gap-x-[.7rem] mt-[.4rem] items-center justify-between 
                       text-white w-[90%] lg:w-[80%] m-auto py-[.5rem] px-[1.5rem]
                     rounded-lg text-[16px] lg:last:hidden`}
-<<<<<<< HEAD
                     style={
                       Item.color
                         ? { backgroundColor: Item.color }
@@ -63,22 +62,6 @@ const Mobile = ({ data }) => {
                 ))}
               </ul>
             </div>
-=======
-                    style={Item.color ? { backgroundColor: Item.color } : {backgroundColor:'#ccc'}}
-                      key={Item.id}
-                    >
-                      <div className="flex gap-x-[.3rem] items-center">
-                        {/* <Item.icon className="text-[16px]" /> */}
-                        <a href={Item.link} target="_blank">{Item.platform}</a>
-                      </div>
-                      <div >
-                        <FaArrowRight />
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-              </div>
->>>>>>> 8f34a235d682feaa72ce67eed6ecaa685beb6c7f
 
             <div>
               <ul>
