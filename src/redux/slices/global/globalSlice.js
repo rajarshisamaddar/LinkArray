@@ -12,21 +12,24 @@ export const globalSlice = createSlice({
         setUser: (state, action) => {
             state.email = action.payload;
         },
-        addLink: (state, action) =>{
-            state.links.push(action.payload);
+        addLink: (state, action) => {
+            state.links = [...state.links, action.payload];
         },
-        removeLink: (state, action)=>{
-            state.links=state.links.filter((link)=>link.id!=action.payload.id)
-            .map((link, index)=>({
-                ...link,
-                id:index+1
-            }));
+        updateLink: (state, action) => {
+            return { ...state, links: action.payload };
+        },
+        removeLink: (state, action) => {
+            state.links = state.links.filter((link) => link.id != action.payload.id)
+                .map((link, index) => ({
+                    ...link,
+                    id: index + 1
+                }));
         }
     },
 });
 
 export const {
-    setUser, addLink, removeLink
+    setUser, addLink, removeLink, updateLink
 } = globalSlice.actions;
 
 export default globalSlice.reducer;

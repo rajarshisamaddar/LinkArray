@@ -2,14 +2,15 @@ import React, { useState } from "react";
 import Empty from "./Empty";
 import UserData from "../Profile/UserData";
 import Form from "./Form";
-import { addLink } from "../../redux/slices/global/globalSlice";
+import { addLink, updateLink } from "../../redux/slices/global/globalSlice";
 import { useDispatch, useSelector } from "react-redux";
+
 const Link = ({ heading, description, isProfile = false }) => {
   const dispatch = useDispatch();
   const links = useSelector((state) => state.global.links);
   const [inputValues, setInputValues] = useState({ platform: "", linkUrl: "" });
 
-  const handleFormSubmit = (formData) => {
+  const addNewLink = (formData) => {
     const id = links.length + 1;
     const count = links.length + 1;
     const newLink = {
@@ -18,9 +19,20 @@ const Link = ({ heading, description, isProfile = false }) => {
       platform: formData.platform,
       link: formData.linkUrl,
     };
+
+    console.log(newLink);
     dispatch(addLink(newLink));
     setInputValues({ platform: "", linkUrl: "" });
   };
+
+  const handleFormSubmit = (formData) => {
+    console.log(links);
+    // const temp = {
+    //   test: "check",
+    // };
+    // dispatch(updateLink(temp));
+  };
+
   return (
     <div
       className="bg-white h-[auto] mt-[1.8rem] rounded-[1rem] py-[1.4rem]  
@@ -41,7 +53,7 @@ const Link = ({ heading, description, isProfile = false }) => {
               className="mt-[2rem] w-[100%] hover:bg-violet-200 text-center border-[1.5px] border-blue-700 text-indigo-600
         font-bold text-[16px] py-[.8rem] rounded-[.6rem]"
             >
-              <button className="w-[100%]" onClick={handleFormSubmit}>
+              <button className="w-[100%]" onClick={addNewLink}>
                 + Add new link
               </button>
             </div>

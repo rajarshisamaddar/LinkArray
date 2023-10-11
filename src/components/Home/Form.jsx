@@ -3,7 +3,6 @@ import { LuEqual } from "react-icons/lu";
 import ColorPicker from "../Profile/ColorPicker";
 import { useSelector, useDispatch } from "react-redux";
 import { removeLink } from "../../redux/slices/global/globalSlice";
-import { addLink } from "../../redux/slices/global/globalSlice";
 const Form = ({ onFormSubmit }) => {
   const links = useSelector((state) => state.global.links);
   const dispatch = useDispatch();
@@ -82,8 +81,11 @@ const Form = ({ onFormSubmit }) => {
             </div>
 
             <div className="w-[30%] lg:w-[50%]">
-              <button className="my-[.5rem] bg-violet-400 px-[1rem] py-[.5rem] h-fit text-[15px] text-white font-bold rounded-lg
-              " onClick={handleSubmit}>
+              <button
+                className="my-[.5rem] bg-violet-400 px-[1rem] py-[.5rem] h-fit text-[15px] text-white font-bold rounded-lg
+              "
+                onClick={handleSubmit}
+              >
                 Choose icon
               </button>
             </div>
