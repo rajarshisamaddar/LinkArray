@@ -2,9 +2,13 @@ import React from "react";
 import MobileFrame from "../../assets/images/illustration-phone-mockup.svg";
 import UserImage from "../../assets/images/avatar13.jpg";
 import { FaArrowRight } from "react-icons/fa6";
+import { Link } from "react-router-dom";
+import {useSelector} from 'react-redux';
+const Mobile = ({ data }) => {
+  const user = useSelector((state)=>state.global.user);
 
-const Mobile = ({ data, isProfile = false }) => {
-  const maxVisibleItems = 6;
+
+  const maxVisibleItems = 7;
   const visibleItems = data.slice(0, maxVisibleItems);
   return (
     <>
@@ -25,36 +29,38 @@ const Mobile = ({ data, isProfile = false }) => {
 
             <div>
               <h2 className="mt-[1rem] font-bold text-gray-500 text-center text-[1.1rem]">
-                Jhon Deo
+                {
+                  user ? (`${user.fname || ''}  ${user.lname || ''}`) : ''
+                }
               </h2>
 
               <p className="mt-[.2rem] text-gray-800 text-center text-[.7rem]">
-                soumayadipsaha2002@gmail.com
+                {
+                  user ? `${user.bio || ''}` : ''
+                }
               </p>
             </div>
-            {isProfile ? (
-              ""
-            ) : (
-              <div className="mt-[4rem] overflow-hidden mb-[-10rem]">
+              <div className="mt-[2rem] overflow-hidden mb-[-10rem]">
                 <ul>
                   {visibleItems.map((Item) => (
                     <li
-                      className="flex gap-x-[.7rem] mt-[.4rem] items-center justify-between bg-gray-300 text-white w-[90%] lg:w-[80%] m-auto py-[.5rem] px-[1.5rem]
-                    rounded-lg text-[16px] lg:last:hidden"
+                      className={`flex gap-x-[.7rem] mt-[.4rem] items-center justify-between 
+                      text-white w-[90%] lg:w-[80%] m-auto py-[.5rem] px-[1.5rem]
+                    rounded-lg text-[16px] lg:last:hidden`}
+                    style={Item.color ? { backgroundColor: Item.color } : {backgroundColor:'#ccc'}}
                       key={Item.id}
                     >
                       <div className="flex gap-x-[.3rem] items-center">
                         {/* <Item.icon className="text-[16px]" /> */}
-                        {/* <p></p> */}
+                        <Link to={Item.link} >{Item.platform}</Link>
                       </div>
-                      <div>
+                      <div >
                         <FaArrowRight />
                       </div>
                     </li>
                   ))}
                 </ul>
               </div>
-            )}
 
             <div>
               <ul>

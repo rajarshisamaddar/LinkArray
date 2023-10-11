@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "../components/Navbar/Navbar";
 import Mobile from "../components/Home/Mobile";
-import Link from "../components/Home/Link";
+import Form from "../components/Home/Form";
 import { FaFacebookF } from "react-icons/fa";
 import {useSelector} from 'react-redux';
 const Home = () => {
@@ -14,7 +14,7 @@ const Home = () => {
         gap-x-[2rem] w-[96.5%] m-auto mb-[2rem] mb:grid-cols-1 sm:grid-cols-1`}
       >
         <Mobile data={links} />
-        <Link heading="Customize your links" description="Add/edit/remove links below and then share all your profiles with the
+        <Form heading="Customize your links" description="Add/edit/remove links below and then share all your profiles with the
           world!" />
       </div>
     </>
