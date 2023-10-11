@@ -60,7 +60,11 @@ const Link = ({ heading, description, isProfile = false }) => {
             {links.length === 0 ? (
               <Empty />
             ) : (
-              <Form onFormSubmit={handleFormSubmit} />
+              <div className="h-96 overflow-y-auto mb:h-auto mt-[2rem] sm:w-[100%] pr-[2rem] mb:pr-0">
+                {links.map((item) => (
+                  <Form item={item} />
+                ))}
+              </div>
             )}
           </div>
         )}
