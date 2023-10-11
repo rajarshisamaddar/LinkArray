@@ -3,24 +3,17 @@ import { LuEqual } from "react-icons/lu";
 import ColorPicker from "../Profile/ColorPicker";
 import { useSelector, useDispatch } from "react-redux";
 import { removeLink } from "../../redux/slices/global/globalSlice";
-import { addLink } from "../../redux/slices/global/globalSlice";
 const Form = ({ onFormSubmit }) => {
   const links = useSelector((state) => state.global.links);
   const dispatch = useDispatch();
   const [platform, setPlatform] = useState("");
   const [linkUrl, setLinkUrl] = useState("");
-
   const handleSubmit = () => {
-    // Create an object with the input field values
     const formData = {
       platform,
       linkUrl,
     };
-
-    // Call the callback function to send the data to the parent component
     onFormSubmit(formData);
-
-    // Clear the input fields
     setPlatform("");
     setLinkUrl("");
   };

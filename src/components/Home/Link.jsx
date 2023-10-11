@@ -7,8 +7,6 @@ import { useDispatch, useSelector } from "react-redux";
 const Link = ({ heading, description, isProfile = false }) => {
   const dispatch = useDispatch();
   const links = useSelector((state) => state.global.links);
-  const [inputValues, setInputValues] = useState({ platform: "", linkUrl: "" });
-
   const handleFormSubmit = (formData) => {
     const id = links.length + 1;
     const count = links.length + 1;
@@ -19,7 +17,6 @@ const Link = ({ heading, description, isProfile = false }) => {
       link: formData.linkUrl,
     };
     dispatch(addLink(newLink));
-    setInputValues({ platform: "", linkUrl: "" });
   };
   return (
     <div
