@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { LuEqual } from "react-icons/lu";
 import ColorPicker from "../Profile/ColorPicker";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { removeLink } from "../../redux/slices/global/globalSlice";
 import { updateLink } from "../../redux/slices/global/globalSlice";
 const Link = ({ item }) => {
@@ -39,8 +39,8 @@ const Link = ({ item }) => {
             value={platformName}
             onChange={(e) => {
               setPlatformName(e.target.value);
-              const updatePlatform = {...item, platform: e.target.value};
-              dispatch(updateLink(updatePlatform))
+              const updatePlatform = { ...item, platform: e.target.value };
+              dispatch(updateLink(updatePlatform));
             }}
           />
         </div>
@@ -55,8 +55,8 @@ const Link = ({ item }) => {
             value={linkUrl}
             onChange={(e) => {
               setLinkUrl(e.target.value);
-              const updateLinkUrl = {...item, link: e.target.value};
-              dispatch(updateLink(updateLinkUrl))
+              const updateLinkUrl = { ...item, link: e.target.value };
+              dispatch(updateLink(updateLinkUrl));
             }}
             className="w-[100%] border-[1.5px] border-gray-300 outline-none py-[.6rem] px-[1rem] rounded-lg my-[.5rem]"
             placeholder=".e.g https://github.com/jhon"
@@ -64,17 +64,17 @@ const Link = ({ item }) => {
         </div>
 
         <div className="w-[100%] ">
-          <label
-            htmlFor="color"
-            className="text-[15px] text-gray-500 mb-[.8rem]"
-          >
-            choose background
+          <label htmlFor="link" className="text-[.8rem] text-gray-500">
+            Choose bg-color
           </label>
-          <ColorPicker color={color} onChange={(e)=>{
-            setColor(e);
-            const updateColor = {...item, color: e.hex}
-            dispatch(updateLink(updateColor))
-          }} />
+          <ColorPicker
+            color={color}
+            onChange={(e) => {
+              setColor(e);
+              const updateColor = { ...item, color: e.hex };
+              dispatch(updateLink(updateColor));
+            }}
+          />
         </div>
 
         <div className="w-[30%] lg:w-[50%]">

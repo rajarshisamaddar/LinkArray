@@ -1,19 +1,20 @@
 import React from "react";
 import MobileFrame from "../../assets/images/illustration-phone-mockup.svg";
-import UserImage from "../../assets/images/avatar13.jpg";
+import UserImage from "../../assets/images/avatar.png";
 import { FaArrowRight } from "react-icons/fa6";
 import { Link } from "react-router-dom";
-import {useSelector} from 'react-redux';
+import { useSelector } from "react-redux";
 const Mobile = ({ data }) => {
-  const user = useSelector((state)=>state.global.user);
-
+  const user = useSelector((state) => state.global.user);
 
   const maxVisibleItems = 7;
   const visibleItems = data.slice(0, maxVisibleItems);
   return (
     <>
-      <div className="bg-white px-[4rem] py-[4rem] flex items-center justify-center mt-[1.8rem] 
-      rounded-[1rem] max-h-[115vh] mb:hidden sm:hidden">
+      <div
+        className="bg-white px-[4rem] py-[4rem] flex items-center justify-center mt-[1.8rem] 
+      rounded-[1rem] max-h-[115vh] mb:hidden sm:hidden"
+      >
         <div className="h-[100%] m-[2rem] flex-1 relative overflow-hidden">
           <div className="flex justify-center h-[100%]">
             <img src={MobileFrame} alt="" className="h-[100%]" />
@@ -29,38 +30,38 @@ const Mobile = ({ data }) => {
 
             <div>
               <h2 className="mt-[1rem] font-bold text-gray-500 text-center text-[1.1rem]">
-                {
-                  user ? (`${user.fname || ''}  ${user.lname || ''}`) : ''
-                }
+                {user ? `${user.fname || ""}  ${user.lname || ""}` : ""}
               </h2>
 
               <p className="mt-[.2rem] text-gray-800 text-center text-[.7rem]">
-                {
-                  user ? `${user.bio || ''}` : ''
-                }
+                {user ? `${user.bio || ""}` : ""}
               </p>
             </div>
-              <div className="mt-[2rem] overflow-hidden mb-[-10rem]">
-                <ul>
-                  {visibleItems.map((Item) => (
-                    <li
-                      className={`flex gap-x-[.7rem] mt-[.4rem] items-center justify-between 
+            <div className="mt-[2rem] overflow-hidden mb-[-10rem]">
+              <ul>
+                {visibleItems.map((Item) => (
+                  <li
+                    className={`flex gap-x-[.7rem] mt-[.4rem] items-center justify-between 
                       text-white w-[90%] lg:w-[80%] m-auto py-[.5rem] px-[1.5rem]
                     rounded-lg text-[16px] lg:last:hidden`}
-                    style={Item.color ? { backgroundColor: Item.color } : {backgroundColor:'#ccc'}}
-                      key={Item.id}
-                    >
-                      <div className="flex gap-x-[.3rem] items-center">
-                        {/* <Item.icon className="text-[16px]" /> */}
-                        <Link to={Item.link} >{Item.platform}</Link>
-                      </div>
-                      <div >
-                        <FaArrowRight />
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+                    style={
+                      Item.color
+                        ? { backgroundColor: Item.color }
+                        : { backgroundColor: "#ccc" }
+                    }
+                    key={Item.id}
+                  >
+                    <div className="flex gap-x-[.3rem] items-center">
+                      {/* <Item.icon className="text-[16px]" /> */}
+                      <Link to={Item.link}>{Item.platform}</Link>
+                    </div>
+                    <div>
+                      <FaArrowRight />
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
             <div>
               <ul>
