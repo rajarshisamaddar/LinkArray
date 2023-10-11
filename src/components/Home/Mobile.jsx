@@ -2,11 +2,13 @@ import React from "react";
 import MobileFrame from "../../assets/images/illustration-phone-mockup.svg";
 import UserImage from "../../assets/images/avatar13.jpg";
 import { FaArrowRight } from "react-icons/fa6";
-import { useState } from "react";
 import { Link } from "react-router-dom";
-const Mobile = ({ data, isProfile = false }) => {
-  //console.log(data.color)
-  const maxVisibleItems = 6;
+import {useSelector} from 'react-redux';
+const Mobile = ({ data }) => {
+  const user = useSelector((state)=>state.global.user);
+
+
+  const maxVisibleItems = 7;
   const visibleItems = data.slice(0, maxVisibleItems);
   return (
     <>
@@ -27,17 +29,18 @@ const Mobile = ({ data, isProfile = false }) => {
 
             <div>
               <h2 className="mt-[1rem] font-bold text-gray-500 text-center text-[1.1rem]">
-                Jhon Deo
+                {
+                  user ? (`${user.fname || ''}  ${user.lname || ''}`) : ''
+                }
               </h2>
 
               <p className="mt-[.2rem] text-gray-800 text-center text-[.7rem]">
-                soumayadipsaha2002@gmail.com
+                {
+                  user ? `${user.bio || ''}` : ''
+                }
               </p>
             </div>
-            {isProfile ? (
-              ""
-            ) : (
-              <div className="mt-[4rem] overflow-hidden mb-[-10rem]">
+              <div className="mt-[2rem] overflow-hidden mb-[-10rem]">
                 <ul>
                   {visibleItems.map((Item) => (
                     <li
@@ -58,7 +61,6 @@ const Mobile = ({ data, isProfile = false }) => {
                   ))}
                 </ul>
               </div>
-            )}
 
             <div>
               <ul>

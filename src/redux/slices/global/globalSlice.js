@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   email: "",
   links: [],
+  user: {}
 };
 
 export const globalSlice = createSlice({
@@ -31,9 +32,14 @@ export const globalSlice = createSlice({
           id: index + 1,
         }));
     },
+
+    addUserData : (state, action)=>{
+      state.user = {...state.user, ...action.payload.user};
+    }
+
   },
 });
 
-export const { setUser, addLink, removeLink, updateLink } = globalSlice.actions;
+export const { setUser, addLink, removeLink, updateLink, addUserData } = globalSlice.actions;
 
 export default globalSlice.reducer;

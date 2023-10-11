@@ -50,7 +50,7 @@ const Link = ({ item }) => {
             Link
           </label>
           <input
-            type="text"
+            type="url"
             name="link"
             value={linkUrl}
             onChange={(e) => {
