@@ -52,7 +52,7 @@ const Mobile = ({ data }) => {
                     >
                       <div className="flex gap-x-[.3rem] items-center">
                         {/* <Item.icon className="text-[16px]" /> */}
-                        <Link to={Item.link} >{Item.platform}</Link>
+                        <a href={Item.link} target="_blank">{Item.platform}</a>
                       </div>
                       <div >
                         <FaArrowRight />

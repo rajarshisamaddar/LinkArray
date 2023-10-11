@@ -4,12 +4,12 @@ import ColorPicker from "../Profile/ColorPicker";
 import { useSelector, useDispatch } from "react-redux";
 import { removeLink } from "../../redux/slices/global/globalSlice";
 import { updateLink } from "../../redux/slices/global/globalSlice";
+import Icon from "./Icon";
 const Link = ({ item }) => {
   const dispatch = useDispatch();
   const [platformName, setPlatformName] = useState("");
   const [linkUrl, setLinkUrl] = useState("");
   const [color, setColor] = useState("#fff");
-
   return (
     <div
       className="h-auto bg-[#fafafa] mt-[.8rem] first:mt-[0] p-[1rem] rounded-lg"
@@ -39,8 +39,8 @@ const Link = ({ item }) => {
             value={platformName}
             onChange={(e) => {
               setPlatformName(e.target.value);
-              const updatePlatform = {...item, platform: e.target.value};
-              dispatch(updateLink(updatePlatform))
+              const updatePlatform = { ...item, platform: e.target.value };
+              dispatch(updateLink(updatePlatform));
             }}
           />
         </div>
@@ -55,36 +55,33 @@ const Link = ({ item }) => {
             value={linkUrl}
             onChange={(e) => {
               setLinkUrl(e.target.value);
-              const updateLinkUrl = {...item, link: e.target.value};
-              dispatch(updateLink(updateLinkUrl))
+              const updateLinkUrl = { ...item, link: e.target.value };
+              dispatch(updateLink(updateLinkUrl));
             }}
             className="w-[100%] border-[1.5px] border-gray-300 outline-none py-[.6rem] px-[1rem] rounded-lg my-[.5rem]"
             placeholder=".e.g https://github.com/jhon"
           />
         </div>
 
-        <div className="w-[100%] ">
+        <div className="w-[100%]">
           <label
             htmlFor="color"
             className="text-[15px] text-gray-500 mb-[.8rem]"
           >
-            choose background
+            Choose background
           </label>
-          <ColorPicker color={color} onChange={(e)=>{
-            setColor(e);
-            const updateColor = {...item, color: e.hex}
-            dispatch(updateLink(updateColor))
-          }} />
+          <div className="mt-2 mb-2">
+            <ColorPicker
+              color={color}
+              onChange={(e) => {
+                setColor(e);
+                const updateColor = { ...item, color: e.hex };
+                dispatch(updateLink(updateColor));
+              }}
+            />
+          </div>
         </div>
-
-        <div className="w-[30%] lg:w-[50%]">
-          <button
-            className="my-[.5rem] bg-violet-400 px-[1rem] py-[.5rem] h-fit text-[15px] text-white font-bold rounded-lg
-              "
-          >
-            Choose icon
-          </button>
-        </div>
+        <Icon />
       </div>
     </div>
   );
