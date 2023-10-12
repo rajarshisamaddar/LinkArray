@@ -53,12 +53,12 @@ const Mobile = ({ data }) => {
                     key={Item.id}
                     onClick={() => (location.href = `${Item.link}`)}
                   >
-                    <div className="flex gap-x-[.3rem] items-center">
+                    <div className="flex gap-x-2 items-center">
                         {ReactFaIcons[Item.icon] &&
                           ReactFaIcons[Item.icon]({
-                            className: "text-[18px] ",
+                            className: "text-[20px]",
                           })}
-                      <Link className="text-[18px]">{Item.platform}</Link>
+                      <Link className="text-[16px]">{Item.platform}</Link>
                     </div>
                     <div>
                       <FaArrowRight />
