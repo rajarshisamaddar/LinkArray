@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { LuEqual } from "react-icons/lu";
 import ColorPicker from "../Profile/ColorPicker";
 import { useDispatch } from "react-redux";
@@ -7,9 +7,7 @@ import { updateLink } from "../../redux/slices/global/globalSlice";
 import Icon from "./Icon";
 const Link = ({ item }) => {
   const dispatch = useDispatch();
-  const [platformName, setPlatformName] = useState("");
-  const [linkUrl, setLinkUrl] = useState("");
-  const [color, setColor] = useState("#fff");
+
   return (
     <div
       className="h-auto bg-[#fafafa] mt-[.8rem] first:mt-[0] p-[1rem] rounded-lg"
@@ -36,9 +34,8 @@ const Link = ({ item }) => {
             className="w-[100%] border-[1.5px] border-gray-300 outline-none py-[.6rem] px-[1rem] rounded-lg my-[.5rem]"
             placeholder=".e.g Github"
             name="platformName"
-            value={platformName}
+            value={item.platform}
             onChange={(e) => {
-              setPlatformName(e.target.value);
               const updatePlatform = { ...item, platform: e.target.value };
               dispatch(updateLink(updatePlatform));
             }}
@@ -52,9 +49,8 @@ const Link = ({ item }) => {
           <input
             type="url"
             name="link"
-            value={linkUrl}
+            value={item.link}
             onChange={(e) => {
-              setLinkUrl(e.target.value);
               const updateLinkUrl = { ...item, link: e.target.value };
               dispatch(updateLink(updateLinkUrl));
             }}
@@ -69,9 +65,8 @@ const Link = ({ item }) => {
           </label>
           <div className="mt-[.5rem] mb-[.5rem]">
             <ColorPicker
-              color={color}
+              color={item.color}
               onChange={(e) => {
-                setColor(e);
                 const updateColor = { ...item, color: e.hex };
                 dispatch(updateLink(updateColor));
               }}
