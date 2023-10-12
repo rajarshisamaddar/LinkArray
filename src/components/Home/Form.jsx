@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Empty from "./Empty";
 import UserData from "../Profile/UserData";
 import Link from "./Link";
-import { addLink, updateLink } from "../../redux/slices/global/globalSlice";
+import { addLink } from "../../redux/slices/global/globalSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 const Form = ({ heading, description, isProfile = false }) => {
@@ -17,7 +17,8 @@ const Form = ({ heading, description, isProfile = false }) => {
       count: count,
       platform: "",
       link: "",
-      color:""
+      color:"",
+      icon: ""
     };
     dispatch(addLink(newLink));
   };
