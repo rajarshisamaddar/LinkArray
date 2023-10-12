@@ -17,8 +17,8 @@ const Form = ({ heading, description, isProfile = false }) => {
       count: count,
       platform: "",
       link: "",
-      color:"",
-      icon: ""
+      color: "",
+      icon: "",
     };
     dispatch(addLink(newLink));
   };
@@ -65,7 +65,7 @@ const Form = ({ heading, description, isProfile = false }) => {
           className="bg-indigo-600 w-fit sm:w-[100%] px-[2.5rem] py-[.7rem] text-[16px] text-white rounded-[.6rem] 
         hover:bg-violet-300"
         >
-          Save
+          Save 2
         </button>
       </div>
     </div>

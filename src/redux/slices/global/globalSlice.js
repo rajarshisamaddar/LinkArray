@@ -33,8 +33,8 @@ export const globalSlice = createSlice({
         }));
     },
 
-    addUserData : (state, action)=>{
-      state.user = {...state.user, ...action.payload.user};
+    addUserData: (state, action) => {
+      state.user = { ...state.user, ...action.payload.user };
     }
 
   },
