@@ -9,9 +9,7 @@ const UserData = () => {
   };
 
   const dispatch = useDispatch();
-  const [fname, setFname] = useState("");
-  const [lname, setLname] = useState("");
-  const [bio, setBio] = useState("");
+  const user = useSelector((state)=>state.global.user)
   return (
     <div className="grid grid-rows-2 gap-y-[1.5rem] h-full mt-[3rem]">
       <div className="bg-[#fafafa] h-[13rem] sm:h-auto lg:h-auto flex items-center px-[1.5rem] rounded-lg sm:py-[1.5rem] lg:py-[2rem]">
@@ -45,9 +43,8 @@ const UserData = () => {
             placeholder=".e.g. Rajarshi"
             className="w-[100%] p-[10px] border-[1px] border-gray-400
             rounded-lg outline-[1px] outline-indigo-600"
-            value={fname}
+            value={user.fname}
             onChange={(e) => {
-              setFname(e.target.value);
               dispatch(addUserData({user: {fname: e.target.value}}))
             }}
           />
@@ -63,9 +60,8 @@ const UserData = () => {
             placeholder=".e.g. Samaddar"
             className="w-[100%] p-[10px] border-[1px] border-gray-400
             rounded-lg outline-[1px] outline-indigo-600"
-            value={lname}
+            value={user.lname}
             onChange={(e)=>{
-              setLname(e.target.value)
               dispatch(addUserData({user: {lname: e.target.value}}))
             }}
           />
@@ -81,9 +77,8 @@ const UserData = () => {
             placeholder=".e.g. Student"
             className="w-[100%] p-[10px] border-[1px] border-gray-400
             rounded-lg outline-[1px] outline-indigo-600"
-            value={bio}
+            value={user.bio}
             onChange={(e)=>{
-              setBio(e.target.value)
               dispatch(addUserData({user: {bio: e.target.value}}))
             }}
           />
