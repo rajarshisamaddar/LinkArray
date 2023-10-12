@@ -52,7 +52,7 @@ const Navbar = ({isHome=false, isProfile=false}) => {
          isMobile ? "text-[1.4rem]" : "text-[16px]"
        }`}
       >
-        <Link to="">{isMobile ? <AiOutlineEye /> : <h3>Preview</h3>}</Link>
+        <Link to="/preview">{isMobile ? <AiOutlineEye /> : <h3>Preview</h3>}</Link>
       </div>
     </div>
   );
