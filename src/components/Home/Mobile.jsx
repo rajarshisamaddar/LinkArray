@@ -51,7 +51,7 @@ const Mobile = ({ data }) => {
                         : { backgroundColor: "#ccc" }
                     }
                     key={Item.id}
-                    onClick={() => (location.href = `${Item.link}`)}
+                    onClick={(e) => (location.href = Item.link)}
                   >
                     <div className="flex gap-x-2 items-center">
                         {ReactFaIcons[Item.icon] &&
