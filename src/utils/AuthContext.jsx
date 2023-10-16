@@ -1,5 +1,10 @@
 import { createContext, useState, useEffect, useContext } from "react";
-import { account } from "../lib/appwriteConfig";
+import {
+  account,
+  databases,
+  DATABASE_ID,
+  USERS_ID,
+} from "../lib/appwriteConfig";
 import { useNavigate } from "react-router-dom";
 import { ID } from "appwrite";
 
@@ -45,16 +50,21 @@ export const AuthProvider = ({ children }) => {
       let response = await account.create(
         ID.unique(),
         userInfo.email,
-        userInfo.password,
-        userInfo.name
+        userInfo.password
       );
 
       await account.createEmailSession(userInfo.email, userInfo.password);
       let accountDetails = await account.get();
       setUser(accountDetails);
+
+      databases.createDocument(DATABASE_ID, USERS_ID, response.$id, {
+        email: userInfo.email,
+        username: userInfo.username,
+      });
+
       navigate("/");
     } catch (error) {
-      console.error(error);
+      alert(error.message);
     }
 
     setLoading(false);
@@ -83,12 +93,12 @@ export const AuthProvider = ({ children }) => {
             <button
               disabled
               type="button"
-              class="text-white bg-indigo-600 hover:bg-indigo-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 inline-flex items-center"
+              className="text-white bg-indigo-600 hover:bg-indigo-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 inline-flex items-center"
             >
               <svg
                 aria-hidden="true"
                 role="status"
-                class="inline w-4 h-4 mr-3 text-white animate-spin"
+                className="inline w-4 h-4 mr-3 text-white animate-spin"
                 viewBox="0 0 100 101"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"

@@ -10,12 +10,21 @@ export const globalSlice = createSlice({
   name: "global",
   initialState,
   reducers: {
+
     setUser: (state, action) => {
       state.email = action.payload;
     },
+
     addLink: (state, action) => {
-      state.links = [...state.links, action.payload];
+      let check = true
+      state.links.map((item) => {
+        if (item.id === action.payload.id)
+          check = false
+      })
+      if (check)
+        state.links = [...state.links, action.payload];
     },
+
     updateLink: (state, action) => {
       state.links = state.links.map((link) => {
         if (link.id === action.payload.id)

@@ -3,8 +3,10 @@ import Navbar from "../components/Navbar/Navbar";
 import Mobile from "../components/Home/Mobile";
 import Form from "../components/Home/Form";
 import { useSelector } from "react-redux";
+
 const Home = () => {
   const links = useSelector((state) => state.global.links);
+
   return (
     <>
       <Navbar isHome />
