@@ -1,4 +1,4 @@
-import { Client, Account, Databases } from "appwrite";
+import { Client, Account, Databases, Query } from "appwrite";
 
 export const API_ENDPOINT = import.meta.env.VITE_API_ENDPOINT;
 export const PROJECT_ID = import.meta.env.VITE_PROJECT_ID;
@@ -11,5 +11,7 @@ const client = new Client().setEndpoint(API_ENDPOINT).setProject(PROJECT_ID);
 export const account = new Account(client);
 
 export const databases = new Databases(client);
+
+export const query = new Query(client);
 
 export default client;

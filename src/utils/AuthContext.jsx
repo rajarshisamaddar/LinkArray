@@ -57,9 +57,11 @@ export const AuthProvider = ({ children }) => {
       let accountDetails = await account.get();
       setUser(accountDetails);
 
+      account.updateName(userInfo.username);
+
       databases.createDocument(DATABASE_ID, USERS_ID, response.$id, {
         email: userInfo.email,
-        username: userInfo.username,
+        username: `@${userInfo.username}`,
       });
 
       navigate("/");
