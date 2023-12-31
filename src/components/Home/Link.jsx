@@ -5,6 +5,8 @@ import { useDispatch } from "react-redux";
 import { removeLink } from "../../redux/slices/global/globalSlice";
 import { updateLink } from "../../redux/slices/global/globalSlice";
 import Icon from "./Icon";
+import { databases, DATABASE_ID, LINKS_ID } from "../../lib/appwriteConfig";
+
 const Link = ({ item }) => {
   const dispatch = useDispatch();
 
@@ -15,11 +17,14 @@ const Link = ({ item }) => {
     >
       <div className="flex justify-between">
         <h3 className="flex gap-x-[.5rem] items-center font-bold text-gray-500">
-          <LuEqual /> Link #{item.id}
+          <LuEqual /> Link #{item.count}
         </h3>
         <h2
           className="cursor-pointer"
-          onClick={() => dispatch(removeLink(item))}
+          onClick={() => {
+            // dispatch(removeLink(item));
+            databases.deleteDocument(DATABASE_ID, LINKS_ID, item.id);
+          }}
         >
           Remove
         </h2>

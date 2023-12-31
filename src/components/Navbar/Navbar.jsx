@@ -6,7 +6,9 @@ import { BiLink } from "react-icons/bi";
 import { BiUserCircle } from "react-icons/bi";
 import { useState, useEffect } from "react";
 import { AiOutlineEye } from "react-icons/ai";
-const Navbar = ({isHome=false, isProfile=false}) => {
+import { useAuth } from "../../utils/AuthContext";
+const Navbar = ({ isHome = false, isProfile = false }) => {
+  const { user } = useAuth();
   const [isMobile, setIsMobile] = useState(false);
   const checkMobile = () => {
     setIsMobile(window.innerWidth <= 480);
@@ -27,16 +29,23 @@ const Navbar = ({isHome=false, isProfile=false}) => {
         <img src={isMobile ? Logo_Small : Logo} alt="" className="h-[2rem]" />
       </div>
       <div className="flex gap-x-[1.5rem] font-bold">
-        <Link to="/" className={`flex gap-x-[.2rem] items-center ${
-            isHome ? 'bg-gray-200 px-[1.5rem] rounded-lg text-indigo-600 ' : ''
+        <Link
+          to="/"
+          className={`flex gap-x-[.2rem] items-center ${
+            isHome ? "bg-gray-200 px-[1.5rem] rounded-lg text-indigo-600 " : ""
           } text-[16px] text-gray-500 hover:text-indigo-600
-        py-[.7rem]`}>
+        py-[.7rem]`}
+        >
           <BiLink className="text-[1.3rem]" />
           <h3 className="sm:hidden">Links</h3>
         </Link>
 
-        <Link to="/profile" className={`flex gap-x-[.2rem] items-center ${
-            isProfile ? 'bg-gray-200 px-[1.5rem] rounded-lg text-indigo-600 ' : ''
+        <Link
+          to="/profile"
+          className={`flex gap-x-[.2rem] items-center ${
+            isProfile
+              ? "bg-gray-200 px-[1.5rem] rounded-lg text-indigo-600 "
+              : ""
           } text-gray-500 text-[16px] hover:text-indigo-600
         py-[.7rem]`}
         >
@@ -52,7 +61,9 @@ const Navbar = ({isHome=false, isProfile=false}) => {
          isMobile ? "text-[1.4rem]" : "text-[16px]"
        }`}
       >
-        <Link to="/preview">{isMobile ? <AiOutlineEye /> : <h3>Preview</h3>}</Link>
+        <Link to={`/${user.name}`}>
+          {isMobile ? <AiOutlineEye /> : <h3>Preview</h3>}
+        </Link>
       </div>
     </div>
   );
