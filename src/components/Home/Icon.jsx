@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { RxCross2 } from "react-icons/rx";
 import IconPicker from "./IconPicker";
 import SearchIcon from "./SearchIcon";
-const Icon = ({item}) => {
+const Icon = ({ item }) => {
   const [showIcon, setShowIcon] = useState(false);
   const [searchInput, setSearchInput] = useState("");
   return (
@@ -17,24 +17,35 @@ const Icon = ({item}) => {
         </button>
       </div>
       <div
-        className={`bg-[#fafafa] fixed h-[80%] ${
+        className={`${
           showIcon ? "visible opacity-1" : "hidden opacity-0"
-        } transition-opacity overflow-hidden ease-in-out z-[10000] w-[60%]  mb:w-[90%] sm:h-[70%]  top-1/2 px-[2rem] sm:px-[.8rem] py-[1.5rem] rounded-lg shadow-xl left-1/2 transform -translate-x-1/2 -translate-y-1/2`}
+        } h-screen  top-0 left-0 right-0 bottom-0 bg-[rgba(0,0,0,0.3)]  fixed flex justify-center items-center`}
       >
         <div
-          className="absolute right-[1rem] top-[1rem] text-[1.6rem] text-white font-bold cursor-pointer bg-indigo-800
-    rounded-full p-[.5rem] sm:text-[1rem] "
-          onClick={(e) => setShowIcon(false)}
+          className={`bg-[#fafafa] h-[80%]  transition-opacity overflow-hidden ease-in-out  z-[10000] w-[60%]  
+          mb:w-[90%] sm:h-[70%]  px-[2rem] relative sm:px-[.8rem] py-[1.5rem] rounded-lg shadow-xl 
+          `}
         >
-          <RxCross2 />
-        </div>
-        <div>
-          <SearchIcon setSearchInput={setSearchInput} />
           <div
-            className="absolute top-[4rem] right-[2rem] bottom-[2rem] left-[2rem] 
-      sm:right-[.7rem] sm:left-[.7rem] sm:bottom-[.7rem] p-[1rem] overflow-y-auto mt-[1rem] border-[1px] border-gray-400 bg-white"
-          >  
-          <IconPicker item={item} onSelect={()=>setShowIcon(false)} searchInput={searchInput} />          
+            className="absolute right-[1rem] top-[1rem] text-[1.6rem] text-white font-bold cursor-pointer bg-indigo-800
+    rounded-full p-[.5rem] sm:text-[1rem] "
+            onClick={(e) => setShowIcon(false)}
+          >
+            <RxCross2 />
+          </div>
+          <div>
+            <SearchIcon setSearchInput={setSearchInput} />
+            <div
+              className="absolute top-[4rem] right-[2rem] bottom-[2rem] left-[2rem] 
+      sm:right-[.7rem] sm:left-[.7rem] sm:bottom-[.7rem] p-[1rem] overflow-y-auto
+       mt-[1rem] border-[1px] border-gray-400 bg-white"
+            >
+              <IconPicker
+                item={item}
+                onSelect={() => setShowIcon(false)}
+                searchInput={searchInput}
+              />
+            </div>
           </div>
         </div>
       </div>

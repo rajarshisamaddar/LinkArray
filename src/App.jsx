@@ -7,6 +7,7 @@ import PrivateRoutes from "./utils/PrivateRoutes";
 import { AuthProvider } from "./utils/AuthContext";
 import Profile from "./pages/Profile";
 import Preview from "./pages/Preview";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/:username" element={<Preview />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
+        <Toaster />
       </AuthProvider>
     </>
   );

@@ -61,7 +61,7 @@ const Navbar = ({ isHome = false, isProfile = false }) => {
          isMobile ? "text-[1.4rem]" : "text-[16px]"
        }`}
       >
-        <Link to={`/${user.name}`}>
+        <Link to={`/@${user.name}`}>
           {isMobile ? <AiOutlineEye /> : <h3>Preview</h3>}
         </Link>
       </div>

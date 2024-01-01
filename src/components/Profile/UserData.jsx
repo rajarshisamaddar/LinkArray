@@ -1,14 +1,17 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import { BsImage } from "react-icons/bs";
 import { addUserData } from "../../redux/slices/global/globalSlice";
 import { useSelector, useDispatch } from "react-redux";
+import { uploadFile } from "../../CRUD/userCrud";
+import { useAuth } from "../../utils/AuthContext";
 const UserData = () => {
   const fileInputRef = useRef(null);
+  const { user } = useAuth();
   const handleFileUpload = () => {
     fileInputRef.current.click();
   };
 
-  const user = useSelector((state) => state.global.user);
+  const userProfile = useSelector((state) => state.global.user);
   const dispatch = useDispatch();
 
   return (
@@ -29,7 +32,14 @@ const UserData = () => {
           <p className="text-[12px] text-gray-600 sm:mt-[1rem] lg:mt-[1rem]">
             Image must be below 1024x1024px. Use PNG or JPG format.
           </p>
-          <input type="file" ref={fileInputRef} className="hidden" />
+          <input
+            type="file"
+            ref={fileInputRef}
+            className="hidden"
+            onChange={(e) => {
+              uploadFile(e.target.files[0], user, userProfile, dispatch);
+            }}
+          />
         </div>
       </div>
 
@@ -44,7 +54,7 @@ const UserData = () => {
             placeholder=".e.g. Rajarshi"
             className="w-[100%] p-[10px] border-[1px] border-gray-400
             rounded-lg outline-[1px] outline-indigo-600"
-            value={user.fname}
+            value={userProfile.fname}
             onChange={(e) => {
               dispatch(addUserData({ user: { fname: e.target.value } }));
             }}
@@ -61,7 +71,7 @@ const UserData = () => {
             placeholder=".e.g. Samaddar"
             className="w-[100%] p-[10px] border-[1px] border-gray-400
             rounded-lg outline-[1px] outline-indigo-600"
-            value={user.lname}
+            value={userProfile.lname}
             onChange={(e) => {
               dispatch(addUserData({ user: { lname: e.target.value } }));
             }}
@@ -78,7 +88,7 @@ const UserData = () => {
             placeholder=".e.g. Student"
             className="w-[100%] p-[10px] border-[1px] border-gray-400
             rounded-lg outline-[1px] outline-indigo-600"
-            value={user.bio}
+            value={userProfile.bio}
             onChange={(e) => {
               dispatch(addUserData({ user: { bio: e.target.value } }));
             }}

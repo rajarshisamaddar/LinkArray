@@ -4,55 +4,23 @@ import UserData from "../Profile/UserData";
 import Link from "./Link";
 import { addLink } from "../../redux/slices/global/globalSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { addUserData } from "../../redux/slices/global/globalSlice";
 import { useAuth } from "../../utils/AuthContext";
+import { updateUser } from "../../CRUD/userCrud";
 import { v4 as uuidv4 } from "uuid";
-import {
-  databases,
-  DATABASE_ID,
-  LINKS_ID,
-  USERS_ID,
-  account,
-} from "../../lib/appwriteConfig";
-
+import { getLinks, createLinks } from "../../CRUD/LinkCrud";
+import { getImage } from "../../CRUD/LinkCrud";
 const Form = ({ heading, description, isProfile = false }) => {
   const { user } = useAuth();
   const dispatch = useDispatch();
   const links = useSelector((state) => state.global.links);
   const myUser = useSelector((state) => state.global.user);
+  useEffect(() => {
+    getLinks(dispatch, user);
+  }, []);
 
   useEffect(() => {
-    const promise = databases.getDocument(DATABASE_ID, USERS_ID, user.$id);
-
-    promise.then(
-      function (response) {
-        dispatch(
-          addUserData({
-            user: {
-              fname: response.firstName,
-              lname: response.lastName,
-              bio: response.bio,
-            },
-          })
-        );
-        response.links.map((item) => {
-          const addNewLink = {
-            id: item.$id,
-            count: item.rank,
-            platform: item.platformName,
-            link: item.link,
-            color: item.color,
-            icon: item.icon,
-            db: true,
-          };
-          dispatch(addLink(addNewLink));
-        });
-      },
-      function (error) {
-        console.log(error); // Failure
-      }
-    );
-  }, []);
+    getImage(dispatch, myUser);
+  }, [myUser.imageId]);
 
   const addNewLink = () => {
     const count = links.length + 1;
@@ -69,49 +37,11 @@ const Form = ({ heading, description, isProfile = false }) => {
   };
 
   const handleSave = async () => {
-    const promise = account.get();
-    promise.then(
-      function (response) {
-        if (isProfile) {
-          if (myUser.fname) {
-            databases.updateDocument(DATABASE_ID, USERS_ID, response.$id, {
-              firstName: myUser.fname,
-            });
-          }
-          if (myUser.lname) {
-            databases.updateDocument(DATABASE_ID, USERS_ID, response.$id, {
-              lastName: myUser.lname,
-            });
-          }
-          if (myUser.bio) {
-            databases.updateDocument(DATABASE_ID, USERS_ID, response.$id, {
-              bio: myUser.bio,
-            });
-          }
-        } else {
-          // console.log("links data save");
-          links.map((item) => {
-            if (item.db === false) {
-              databases.createDocument(DATABASE_ID, LINKS_ID, item.id, {
-                users: response.$id,
-                rank: item.count,
-                link: item.link,
-                platformName: item.platform,
-                icon: item.icon,
-                color: item.color,
-              });
-            } else {
-              databases.updateDocument(DATABASE_ID, LINKS_ID, item.id, {
-                platformName: item.platform,
-              });
-            }
-          });
-        }
-      },
-      function (error) {
-        console.log(error); // Failure
-      }
-    );
+    if (isProfile) {
+      updateUser(myUser, user);
+    } else {
+      createLinks(links, user);
+    }
   };
 
   return (

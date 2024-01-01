@@ -11,3 +11,14 @@
     background: #fafafa;
   }
 }
+@layer utilities{
+  ::-webkit-scrollbar{
+    width: .5rem;
+  }
+  ::-webkit-scrollbar-thumb{
+    background: #5b5b5b;
+    border-radius: 1rem;
+    cursor: pointer;
+
+  }
+}

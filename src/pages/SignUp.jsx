@@ -6,10 +6,10 @@ import { useAuth } from "../utils/AuthContext";
 function SignUp() {
   const navigate = useNavigate();
   const { registerUser, user } = useAuth();
-  const [username, setUsername] = useState();
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
-  const [password2, setPassword2] = useState();
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [password2, setPassword2] = useState("");
 
   useEffect(() => {
     if (user) {
@@ -31,10 +31,10 @@ function SignUp() {
 
   return (
     <form
-      class="flex bg-gradient-to-b from-violet-100 to-gray-50 text-gray-500 h-screen"
+      className="flex bg-gradient-to-b from-violet-100 to-gray-50 text-gray-500 h-screen"
       onSubmit={handleSubmit}
     >
-      <div class="m-auto border p-8 bg-white/30 rounded-2xl backdrop-blur-lg">
+      <div className="m-auto border p-8 bg-white/30 rounded-2xl backdrop-blur-lg">
         <img className="mx-auto" src={Logo} width="150px"></img>
         <h3 className="font-semibold text-xl mt-8">Create account</h3>
         <p className="text-lg mt-1">

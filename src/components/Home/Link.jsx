@@ -4,12 +4,11 @@ import ColorPicker from "../Profile/ColorPicker";
 import { useDispatch } from "react-redux";
 import { removeLink } from "../../redux/slices/global/globalSlice";
 import { updateLink } from "../../redux/slices/global/globalSlice";
+import { deleteDocument } from "../../CRUD/LinkCrud";
 import Icon from "./Icon";
-import { databases, DATABASE_ID, LINKS_ID } from "../../lib/appwriteConfig";
-
 const Link = ({ item }) => {
   const dispatch = useDispatch();
-
+  const [colorValue, setColorValue] = useState();
   return (
     <div
       className="h-auto bg-[#fafafa] mt-[.8rem] first:mt-[0] p-[1rem] rounded-lg"
@@ -22,8 +21,8 @@ const Link = ({ item }) => {
         <h2
           className="cursor-pointer"
           onClick={() => {
-            // dispatch(removeLink(item));
-            databases.deleteDocument(DATABASE_ID, LINKS_ID, item.id);
+            deleteDocument(item.id)
+            dispatch(removeLink(item));
           }}
         >
           Remove
@@ -61,6 +60,24 @@ const Link = ({ item }) => {
             }}
             className="w-[100%] border-[1.5px] border-gray-300 outline-none py-[.6rem] px-[1rem] rounded-lg my-[.5rem]"
             placeholder=".e.g https://github.com/jhon"
+          />
+        </div>
+
+        <div className="w-[100%]">
+          <label htmlFor="link" className="text-[.8rem] text-gray-500">
+            Background
+          </label>
+          <input
+            type="text"
+            name="color"
+            value={item.color ? item.color : colorValue}
+            onChange={(e) => {
+              setColorValue(e.target.value)
+              const updateLinkColor = { ...item, color: e.target.value };
+              dispatch(updateLink(updateLinkColor));
+            }}
+            className="w-[100%] border-[1.5px] border-gray-300 outline-none py-[.6rem] px-[1rem] rounded-lg my-[.5rem]"
+            placeholder="baground color e.g.hexcode"
           />
         </div>
 

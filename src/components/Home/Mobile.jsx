@@ -23,7 +23,7 @@ const Mobile = ({ data }) => {
           <div className="text-black absolute w-[90%] top-[12%] left-[5%] right[5%] m-[0,auto]">
             <div className="flex justify-center">
               <img
-                src={UserImage}
+                src={user.image ? user.image : UserImage}
                 alt=""
                 className="rounded-full h-[7rem] w-[7rem] border-[.3rem] border-blue-700"
               />
