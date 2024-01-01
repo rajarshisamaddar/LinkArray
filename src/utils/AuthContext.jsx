@@ -1,5 +1,10 @@
 import { createContext, useState, useEffect, useContext } from "react";
-import { account } from "../lib/appwriteConfig";
+import {
+  account,
+  databases,
+  DATABASE_ID,
+  USERS_ID,
+} from "../lib/appwriteConfig";
 import { useNavigate } from "react-router-dom";
 import { ID } from "appwrite";
 
@@ -45,16 +50,23 @@ export const AuthProvider = ({ children }) => {
       let response = await account.create(
         ID.unique(),
         userInfo.email,
-        userInfo.password,
-        userInfo.name
+        userInfo.password
       );
 
       await account.createEmailSession(userInfo.email, userInfo.password);
       let accountDetails = await account.get();
       setUser(accountDetails);
+
+      account.updateName(userInfo.username);
+
+      databases.createDocument(DATABASE_ID, USERS_ID, response.$id, {
+        email: userInfo.email,
+        username: `@${userInfo.username}`,
+      });
+
       navigate("/");
     } catch (error) {
-      console.error(error);
+      alert(error.message);
     }
 
     setLoading(false);
