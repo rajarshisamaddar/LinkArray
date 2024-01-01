@@ -23,10 +23,10 @@ function SignIn() {
 
   return (
     <form
-      class="flex bg-gradient-to-b from-violet-100 to-gray-50 text-gray-500 h-screen"
+      className="flex bg-gradient-to-b from-violet-100 to-gray-50 text-gray-500 h-screen"
       onSubmit={handleSubmit}
     >
-      <div class="m-auto border p-8 bg-white/30 rounded-2xl backdrop-blur-lg">
+      <div className="m-auto border p-8 bg-white/30 rounded-2xl backdrop-blur-lg">
         <img className="mx-auto" src={Logo} width="150px"></img>
         <h3 className="font-semibold text-xl mt-8">Sign In</h3>
         <p className="text-lg mt-1">Enter your details below to get back</p>
