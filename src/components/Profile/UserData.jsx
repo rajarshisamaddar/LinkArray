@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { uploadFile } from "../../CRUD/userCrud";
 import { useAuth } from "../../utils/AuthContext";
 import ImageLoading from "../Loading/ImageLoading";
+import toast from "react-hot-toast";
 const UserData = () => {
   const fileInputRef = useRef(null);
   const [loading, setLoading] = useState(false);
@@ -34,8 +35,10 @@ const UserData = () => {
   return (
     <div className="grid grid-rows-2 gap-y-[1.5rem] h-full mt-[3rem]">
       <div className="bg-[#fafafa] dark:bg-[#111] h-[13rem] sm:h-auto lg:h-auto flex items-center px-[1.5rem] rounded-lg sm:py-[1.5rem] lg:py-[2rem]">
-        <div className="grid grid-cols-3 gap-x-[3rem] items-center sm:grid-cols-1 lg:grid-cols-1
-        text-gray-600 dark:text-gray-400">
+        <div
+          className="grid grid-cols-3 gap-x-[3rem] items-center sm:grid-cols-1 lg:grid-cols-1
+        text-gray-600 dark:text-gray-400"
+        >
           <p className="text-[15px]  sm:mb-[1rem] lg:mb-[1rem]">
             Profile picture
           </p>
@@ -54,14 +57,35 @@ const UserData = () => {
             )}
           </div>
           <p className="text-[12px]  sm:mt-[1rem] lg:mt-[1rem]">
-            Image must be below 1024x1024px. Use PNG or JPG format.
+            Image must be below 1024x1024px. Use JPG, JPEG, PNG, or GIF format.
           </p>
           <input
             type="file"
             ref={fileInputRef}
             className="hidden"
+            accept=".png, .jpg, .jpeg, .gif"
             onChange={async (e) => {
-              handleImageUpload(e);
+              const file = e.target.files[0];
+              if (file) {
+                // Check file size (1MB = 1024 * 1024 bytes)
+                if (file.size > 1024 * 1024) {
+                  toast.error("File size exceeds 1MB");
+                  return;
+                }
+
+                // Check image dimensions
+                const img = new Image();
+                img.src = URL.createObjectURL(file);
+                img.onload = function () {
+                  if (this.width > 1024 || this.height > 1024) {
+                    toast.error("Image dimensions exceed 1024x1024");
+                    return;
+                  }
+
+                  // If file size and dimensions are ok, handle the image upload
+                  handleImageUpload(e);
+                };
+              }
             }}
           />
         </div>
@@ -76,6 +100,7 @@ const UserData = () => {
             Firstname
           </label>
           <input
+            maxLength={16}
             type="text"
             name="fname"
             placeholder=".e.g. Rajarshi"
@@ -94,6 +119,7 @@ const UserData = () => {
             Lastname
           </label>
           <input
+            maxLength={16}
             type="text"
             name="lname"
             placeholder=".e.g. Samaddar"
@@ -112,10 +138,11 @@ const UserData = () => {
           </label>
           <input
             type="text"
+            maxLength={200}
             name="bio"
             placeholder=".e.g. Student"
             className="w-[100%] p-[10px] border-[1px] border-gray-400 dark:bg-black dark:border-gray-600
-            rounded-lg outline-[1px] outline-indigo-600"
+            rounded-lg outline-[1px] outline-indigo-600 h-[4rem]"
             value={userProfile.bio}
             onChange={(e) => {
               dispatch(addUserData({ user: { bio: e.target.value } }));

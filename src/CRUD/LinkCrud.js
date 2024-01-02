@@ -63,6 +63,8 @@ export const getImage = async (dispatch, myUser) => {
 };
 
 export const createLinks = async (links, user) => {
+  let created = 0;
+  let updated = 0;
   try {
     for (const item of links) {
       if (item.db === false) {
@@ -80,9 +82,7 @@ export const createLinks = async (links, user) => {
           }
         );
         if (response) {
-          toast.success("successfully created", {
-            className: "dark:bg-[#222] bg-white dark:text-white",
-          });
+          created++;
         }
       } else {
         const response = await databases.updateDocument(
@@ -97,15 +97,21 @@ export const createLinks = async (links, user) => {
             rank: item.count,
           }
         );
-        if(item.db===true && response){
-          toast.success("successfully updated", {
-            className: "dark:bg-[#222] bg-white dark:text-white",
-          });
+        if (item.db === true && response) {
+          updated++;
         }
       }
     }
+    toast.success(
+      `${updated} previous links updated and ${created} new links created.`,
+      {
+        className: "dark:bg-[#222] bg-white dark:text-white",
+      }
+    );
   } catch (error) {
-    console.log(error);
+    toast.error("An error occurred while saving links", {
+      className: "dark:bg-[#222] bg-white dark:text-white",
+    });
   }
 };
 

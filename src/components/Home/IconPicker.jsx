@@ -14,7 +14,7 @@ export default function IconPicker({ item, onSelect, searchInput }) {
       )
     : Icons;
   const menuCategories = filterIcon.map((a, index) => {
-    const IconElement = ReactIcons[a];// Add this line
+    const IconElement = ReactIcons[a]; // Add this line
     return (
       <a
         key={index}
@@ -24,14 +24,16 @@ export default function IconPicker({ item, onSelect, searchInput }) {
           onSelect();
         }}
       >
-        {IconElement && <IconElement color="black" size={35} />}
+        {IconElement && (
+          <IconElement className="text-gray-800 dark:text-gray-50" size={35} />
+        )}
       </a>
     );
   });
 
   return (
     <>
-      <div className="grid grid-cols-11 gap-2 overflow-y-auto sm:grid-cols-6 mb:grid-cols-9">
+      <div className="dark:bg-gray-900 grid grid-cols-11 gap-2 overflow-y-auto sm:grid-cols-6 mb:grid-cols-9">
         {menuCategories}
       </div>
     </>

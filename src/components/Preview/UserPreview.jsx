@@ -2,6 +2,10 @@ import React from "react";
 import UserImage from "../../assets/images/avatar.png";
 import * as ReactFaIcons from "react-icons/fa6";
 import { FaArrowRight } from "react-icons/fa6";
+import { MdVerified } from "react-icons/md";
+import { FiGithub } from "react-icons/fi";
+import { FaCode } from "react-icons/fa6";
+import { FaIndianRupeeSign } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 const UserPreview = ({ user, image }) => {
   return (
@@ -10,13 +14,39 @@ const UserPreview = ({ user, image }) => {
         <img
           src={image !== "" ? image : UserImage}
           alt=""
-          className="absolute top-[-4rem] h-[8rem] w-[8rem] rounded-full border-[2px] border-indigo-600"
+          className="absolute top-[-4rem] h-[8rem] w-[8rem] rounded-full border-[4px] border-indigo-600 dark:border-indigo-400"
         />
         <div className="mt-[4rem]">
-          <h2 className="text-[18px] font-bold text-center text-gray-400 dark:text-gray-300 mb-[.3rem]">
-            {user.fname} {user.lname}
-          </h2>
-          <p className="text-center text-[13px] text-violet-600 dark:text-violet-400 mb-[.6rem]">
+          {(user.admin && (
+            <div className="flex uppercase items-center justify-center text-[18px] font-bold text-center text-gray-700 dark:text-gray-300 mb-[.3rem]">
+              <h2>
+                {user.fname} {user.lname}
+              </h2>
+              <MdVerified className="ml-1 text-blue-500" />
+            </div>
+          )) || (
+            <h2 className="text-[18px] uppercase font-bold text-center text-gray-700 dark:text-gray-300 mb-[.3rem]">
+              {user.fname} {user.lname}
+            </h2>
+          )}
+          {user.admin && (
+            <div className="mb-[.3rem] flex justify-center">
+              <span className="m-1 text-xs bg-rose-500 dark:bg-rose-500 text-black px-2 py-1 rounded flex items-center">
+                <FaIndianRupeeSign />
+                <span className="uppercase">sponsor</span>
+              </span>
+              <span className="m-1 text-xs bg-yellow-500 dark:bg-yellow-300 text-black px-2 py-1 rounded flex items-center">
+                <FiGithub />
+                <span className="uppercase ml-1">Maintainer</span>
+              </span>
+              <span className="m-1 text-xs bg-indigo-500 dark:bg-indigo-300 text-black px-2 py-1 rounded flex items-center">
+                <FaCode />
+                <span className="uppercase ml-1">Pro</span>
+              </span>
+            </div>
+          )}
+
+          <p className="text-center text-[13px] text-violet-800 dark:text-violet-400 mb-[.6rem]">
             {user.bio}
           </p>
         </div>

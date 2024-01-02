@@ -11,6 +11,7 @@ import { getLinks, createLinks } from "../../CRUD/LinkCrud";
 import { getImage } from "../../CRUD/LinkCrud";
 import Logout from "../Theme/Logout";
 import ThemeSwitcher from "../Theme/ThemeSwitcher";
+import toast from "react-hot-toast";
 
 const Form = ({ heading, description, isProfile = false }) => {
   const { user, logoutUser } = useAuth();
@@ -43,8 +44,38 @@ const Form = ({ heading, description, isProfile = false }) => {
     if (isProfile) {
       updateUser(myUser, user);
     } else {
-      createLinks(links, user);
+      if (links.every(validateLink)) {
+        createLinks(links, user);
+      } else {
+        toast.error("Check all the fields before saving!");
+      }
     }
+  };
+
+  const validateLink = (link) => {
+    // Check if all fields are present
+    if (
+      !link.id ||
+      !link.count ||
+      !link.platform ||
+      !link.link ||
+      !link.color ||
+      !link.icon
+    ) {
+      return false;
+    }
+
+    // Check if the link is in the correct format
+    const urlPattern = new RegExp(
+      "^(https?:\\/\\/)?" + // protocol
+        "((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|" + // domain name
+        "((\\d{1,3}\\.){3}\\d{1,3}))" + // OR ip (v4) address
+        "(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*" + // port and path
+        "(\\?[;&a-z\\d%_.~+=-]*)?" + // query string
+        "(\\#[-a-z\\d_]*)?$",
+      "i"
+    ); // fragment locator
+    return !!urlPattern.test(link.link);
   };
 
   return (

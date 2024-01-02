@@ -35,6 +35,7 @@ const Link = ({ item }) => {
             Platform
           </label>
           <input
+            maxLength={64}
             type="text"
             className="w-[100%] border-[1.5px] border-gray-300 
             dark:bg-black dark:border-gray-600 outline-none py-[.6rem] px-[1rem] rounded-lg my-[.5rem]"
@@ -53,6 +54,7 @@ const Link = ({ item }) => {
             Link
           </label>
           <input
+            maxLength={512}
             type="url"
             name="link"
             value={item.link}
@@ -70,6 +72,7 @@ const Link = ({ item }) => {
             Background
           </label>
           <input
+            max={10}
             type="text"
             name="color"
             value={item.color ? item.color : colorValue}

@@ -19,10 +19,10 @@ const Icon = ({ item }) => {
       <div
         className={`${
           showIcon ? "visible opacity-1" : "hidden opacity-0"
-        } h-screen  top-0 left-0 right-0 bottom-0 bg-[rgba(0,0,0,0.3)]  fixed flex justify-center items-center`}
+        } h-screen  top-0 left-0 right-0 bottom-0 bg-[rgba(245,247,179,0.3)]  fixed flex justify-center items-center`}
       >
         <div
-          className={`bg-[#fafafa] h-[80%]  transition-opacity overflow-hidden ease-in-out  z-[10000] w-[60%]  
+          className={`bg-[#fafafa] dark:bg-[#181818] h-[80%]  transition-opacity overflow-hidden ease-in-out  z-[10000] w-[60%]  
           mb:w-[90%] sm:h-[70%]  px-[2rem] relative sm:px-[.8rem] py-[1.5rem] rounded-lg shadow-xl 
           `}
         >
@@ -38,7 +38,7 @@ const Icon = ({ item }) => {
             <div
               className="absolute top-[4rem] right-[2rem] bottom-[2rem] left-[2rem] 
       sm:right-[.7rem] sm:left-[.7rem] sm:bottom-[.7rem] p-[1rem] overflow-y-auto
-       mt-[1rem] border-[1px] border-gray-400 bg-white"
+       mt-[1rem] border-[1px] border-gray-400 dark:border-gray-500 bg-white dark:bg-gray-900"
             >
               <IconPicker
                 item={item}

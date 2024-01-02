@@ -56,7 +56,7 @@ const Preview = () => {
     <div>
       {loading && <Loading />}
       {!loading && (
-        <div>
+        <div className="pb-8">
           <PreviewNav />
           <div className="mt-2 flex justify-end w-[94%] mb:w-[92%] sm:w-[90%] m-auto">
             <ThemeSwitcher />

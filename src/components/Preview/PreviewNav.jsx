@@ -28,10 +28,10 @@ const PreviewNav = () => {
         </Link>
       )) || (
         <Link
-          to="/sign-in"
+          to="/sign-up"
           className="border-[1.5px] border-indigo-600 dark:hover:bg-violet-400 px-[1.8rem] py-[.7rem] rounded-lg hover:bg-violet-200"
         >
-          Sign In
+          Create
         </Link>
       )}
       <div

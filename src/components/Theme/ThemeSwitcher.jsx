@@ -62,16 +62,18 @@ const ThemeSwitcher = () => {
     <div
       className={`h-[1.8rem] sm:h-[1.5rem] sm:w-[2.8rem] w-[3.5rem] 
       cursor-pointer  p-1 rounded-2xl flex items-center ${
-        theme === "dark" ? "justify-start bg-[#333]" : "justify-end bg-[#ddd]"
+        theme === "dark"
+          ? "justify-start bg-[#413f30]"
+          : "justify-end bg-[#e1d8f8]"
       } transition-all duration-300 ease-in`}
       onClick={handleTheme}
     >
       <button className={`cursor-pointer text-2xl sm:text-lg  flex `}>
         <p>
           {theme === "light" ? (
-            <MdDarkMode className="text-black" />
+            <MdDarkMode className="text-indigo-700" />
           ) : (
-            <PiSunFill className="text-white" />
+            <PiSunFill className="text-amber-300" />
           )}
         </p>
       </button>
