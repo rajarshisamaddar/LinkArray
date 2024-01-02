@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import UserPreview from "../components/Preview/UserPreview";
 import PreviewNav from "../components/Preview/PreviewNav";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import {
   databases,
   DATABASE_ID,
@@ -14,6 +14,8 @@ import Loading from "../components/Loading/Loading";
 import { useAuth } from "../utils/AuthContext";
 
 const Preview = () => {
+  const Navigate = useNavigate();
+
   const { username } = useParams();
 
   const { user } = useAuth();
@@ -27,7 +29,7 @@ const Preview = () => {
       const response = await databases.listDocuments(DATABASE_ID, USERS_ID, [
         Query.equal("username", username),
       ]);
-      if (response.total === 0) alert("user not exist");
+      if (response.total === 0) Navigate("/user-not-found/404");
       else {
         setUserDetails(response.documents[0]);
         setLoading(false);
