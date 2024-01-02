@@ -63,6 +63,7 @@ export const AuthProvider = ({ children }) => {
         lname: "",
         bio: "",
         image: "",
+        theme:""
       });
       let accountDetails = await account.get();
       setUser(accountDetails);

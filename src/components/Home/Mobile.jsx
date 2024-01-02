@@ -16,7 +16,7 @@ const Mobile = ({ data }) => {
         className="bg-white dark:bg-black px-[4rem] py-[4rem] flex items-center justify-center mt-[1.8rem] 
       rounded-[1rem] h-auto mb:hidden sm:hidden"
       >
-        <div className="h-[100%] m-[2rem] flex-1 relative overflow-hidden">
+        <div className="h-[90%] m-[2rem] flex-1 relative overflow-hidden">
           <div className="flex justify-center h-[100%]">
             <img src={MobileFrame} alt="" className="h-[100%]" />
           </div>
