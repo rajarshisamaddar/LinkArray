@@ -11,7 +11,7 @@ const Navbar = ({ isHome = false, isProfile = false }) => {
   const { user } = useAuth();
   const [isMobile, setIsMobile] = useState(false);
   const checkMobile = () => {
-    setIsMobile(window.innerWidth <= 480);
+    setIsMobile(window.innerWidth <= 550);
   };
 
   useEffect(() => {

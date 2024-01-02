@@ -1,43 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { PiSunFill } from "react-icons/pi";
 import { MdDarkMode } from "react-icons/md";
 import { DATABASE_ID, USERS_ID, databases } from "../../lib/appwriteConfig";
 import { useAuth } from "../../utils/AuthContext";
-import { Query } from "appwrite";
 import { addTheme } from "../../redux/slices/global/globalSlice";
 import { useDispatch, useSelector } from "react-redux";
-
-const ThemeSwitcher = () => {
-  //onst [theme, setTheme] = useState(null);
+import { getTheme } from "./getTheme";
+import { getUserTheme } from "./getUserTheme";
+const ThemeSwitcher = ({ username }) => {
   const theme = useSelector((state) => state.global.theme);
   const dispatch = useDispatch();
   const { user } = useAuth();
-  const getTheme = async () => {
-    try {
-      const response = await databases.listDocuments(DATABASE_ID, USERS_ID, [
-        Query.equal("username", `@${user.name}`),
-      ]);
-
-      if (response.documents) {
-        if (response.theme !== "") {
-          dispatch(addTheme(response.documents[0].theme));
-        } else {
-          dispatch(
-            addTheme(
-              window.matchMedia("(prefers-color-scheme:dark)").matches()
-                ? "dark"
-                : "light"
-            )
-          );
-        }
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   useEffect(() => {
-    getTheme();
+    if (user) {
+      getTheme(dispatch, user);
+    } else {
+      if (username) {
+        getUserTheme(username, dispatch)
+      }
+    }
   }, []);
 
   useEffect(() => {

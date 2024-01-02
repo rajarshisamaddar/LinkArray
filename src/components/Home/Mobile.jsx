@@ -20,7 +20,7 @@ const Mobile = ({ data }) => {
           <div className="flex justify-center h-[100%]">
             <img src={MobileFrame} alt="" className="h-[100%]" />
           </div>
-          <div className="text-black absolute w-[90%] top-[12%] left-[5%] right[5%] m-[0,auto]">
+          <div className="text-black absolute w-[90%] top-[12%] left-[5%] right[5%] h-[80%] m-[0,auto]">
             <div className="flex justify-center">
               <img
                 src={user.image ? user.image : UserImage}
@@ -38,9 +38,9 @@ const Mobile = ({ data }) => {
                 {user ? `${user.bio || ""}` : ""}
               </p>
             </div>
-            <div className="mt-[2rem] overflow-hidden mb-[-10rem]">
+            <div className="mt-[2rem] mb-[-10rem] h-[60%] overflow-y-auto cursor-grab">
               <ul>
-                {visibleItems.map((Item) => (
+                {data.map((Item) => (
                   <li
                     className={`flex gap-x-[.7rem] mt-[.4rem] items-center  justify-between 
                       text-white w-[90%] lg:w-[80%] h-[100%] m-auto py-[.5rem] px-[1.5rem]

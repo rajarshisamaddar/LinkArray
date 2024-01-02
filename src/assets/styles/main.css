@@ -11,7 +11,7 @@
 }
 @layer utilities{
   ::-webkit-scrollbar{
-    width: .5rem;
+    width: .4rem;
   }
   ::-webkit-scrollbar-thumb{
     background: #5b5b5b;
