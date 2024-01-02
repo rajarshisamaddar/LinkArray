@@ -11,7 +11,7 @@ import {
 } from "../lib/appwriteConfig";
 import { Query } from "appwrite";
 import Loading from "../components/Loading/Loading";
-import { useAuth } from "../utils/AuthContext";
+// import { useAuth } from "../utils/AuthContext";
 import ThemeSwitcher from "../components/Theme/ThemeSwitcher";
 
 const Preview = () => {
@@ -19,7 +19,7 @@ const Preview = () => {
 
   const { username } = useParams();
 
-  const { user } = useAuth();
+  // const { user } = useAuth();
   const [userDetails, setUserDetails] = useState([]);
   const [image, setImage] = useState("");
   const [loading, setLoading] = useState(true);

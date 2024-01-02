@@ -2,6 +2,7 @@ import React from "react";
 import UserImage from "../../assets/images/avatar.png";
 import * as ReactFaIcons from "react-icons/fa6";
 import { FaArrowRight } from "react-icons/fa6";
+import { FiExternalLink } from "react-icons/fi";
 import { MdVerified } from "react-icons/md";
 import { FiGithub } from "react-icons/fi";
 import { FaCode } from "react-icons/fa6";
@@ -71,7 +72,7 @@ const UserPreview = ({ user, image }) => {
                 {link.platformName}
               </h3>
             </div>
-            <FaArrowRight />
+            <FiExternalLink size={22} />
           </Link>
         ))}
       </div>

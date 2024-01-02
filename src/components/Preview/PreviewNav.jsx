@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../utils/AuthContext";
 import toast from "react-hot-toast";
+import { FaLink } from "react-icons/fa";
+import { FiEdit } from "react-icons/fi";
 
 const PreviewNav = () => {
   const { user } = useAuth();
@@ -20,17 +22,19 @@ const PreviewNav = () => {
     >
       {(user && (
         <Link
-          to="/profile"
-          className="border-[1.5px] border-indigo-600 px-[1.8rem] py-[.7rem] rounded-lg hover:bg-violet-200
-           dark:hover:bg-violet-400"
+          to="/"
+          className="flex items-center border-[1.5px] border-indigo-600 px-[1.8rem] py-[.7rem] rounded-lg hover:bg-violet-200
+   dark:hover:bg-violet-400"
         >
-          Profile
+          <FiEdit className="mr-2" />
+          Editor
         </Link>
       )) || (
         <Link
           to="/sign-up"
-          className="border-[1.5px] border-indigo-600 dark:hover:bg-violet-400 px-[1.8rem] py-[.7rem] rounded-lg hover:bg-violet-200"
+          className="flex items-center border-[1.5px] border-indigo-600 dark:hover:bg-violet-400 px-[1.8rem] py-[.7rem] rounded-lg hover:bg-violet-200"
         >
+          <FiEdit className="mr-2" />
           Create
         </Link>
       )}
@@ -44,7 +48,10 @@ const PreviewNav = () => {
 
        `}
       >
-        <h3>Share Link</h3>
+        <h3 className="flex items-center">
+          <FaLink className="mr-2" />
+          <span>Share</span>
+        </h3>
       </div>
     </div>
   );

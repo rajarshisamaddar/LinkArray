@@ -64,14 +64,14 @@ const ThemeSwitcher = () => {
       cursor-pointer  p-1 rounded-2xl flex items-center ${
         theme === "dark"
           ? "justify-start bg-[#413f30]"
-          : "justify-end bg-[#e1d8f8]"
+          : "justify-end bg-indigo-100"
       } transition-all duration-300 ease-in`}
       onClick={handleTheme}
     >
       <button className={`cursor-pointer text-2xl sm:text-lg  flex `}>
         <p>
           {theme === "light" ? (
-            <MdDarkMode className="text-indigo-700" />
+            <MdDarkMode className="text-indigo-500" />
           ) : (
             <PiSunFill className="text-amber-300" />
           )}
