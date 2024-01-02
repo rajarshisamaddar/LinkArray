@@ -18,7 +18,7 @@ const ThemeSwitcher = () => {
         Query.equal("username", `@${user.name}`),
       ]);
 
-      if (response) {
+      if (response.documents) {
         if (response.theme !== "") {
           dispatch(addTheme(response.documents[0].theme));
         } else {
@@ -51,9 +51,11 @@ const ThemeSwitcher = () => {
   const handleTheme = async () => {
     const newTheme = theme === "dark" ? "light" : "dark";
     dispatch(addTheme(newTheme));
-    await databases.updateDocument(DATABASE_ID, USERS_ID, user.$id, {
-      theme: newTheme,
-    });
+    if (user) {
+      await databases.updateDocument(DATABASE_ID, USERS_ID, user.$id, {
+        theme: newTheme,
+      });
+    }
   };
 
   return (

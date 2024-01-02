@@ -91,7 +91,7 @@ const Form = ({ heading, description, isProfile = false }) => {
       <div className="flex justify-end mt-[2.4rem] w-[90%] m-auto sm:w-[80%]">
         <button
           className="bg-indigo-600 w-fit sm:w-[100%] px-[2.5rem] py-[.7rem] text-[16px] text-white rounded-[.6rem] 
-        hover:bg-violet-300"
+        hover:bg-violet-400"
           onClick={handleSave}
         >
           Save
