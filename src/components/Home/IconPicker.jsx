@@ -14,8 +14,7 @@ export default function IconPicker({ item, onSelect, searchInput }) {
       )
     : Icons;
   const menuCategories = filterIcon.map((a, index) => {
-    const IconElement = ReactIcons[a];
-    console.log(`Icon name: ${a}, Icon component:`, IconElement); // Add this line
+    const IconElement = ReactIcons[a];// Add this line
     return (
       <a
         key={index}

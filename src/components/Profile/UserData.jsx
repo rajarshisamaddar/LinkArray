@@ -33,14 +33,15 @@ const UserData = () => {
 
   return (
     <div className="grid grid-rows-2 gap-y-[1.5rem] h-full mt-[3rem]">
-      <div className="bg-[#fafafa] h-[13rem] sm:h-auto lg:h-auto flex items-center px-[1.5rem] rounded-lg sm:py-[1.5rem] lg:py-[2rem]">
-        <div className="grid grid-cols-3 gap-x-[3rem] items-center sm:grid-cols-1 lg:grid-cols-1">
-          <p className="text-[15px] text-gray-600 sm:mb-[1rem] lg:mb-[1rem]">
+      <div className="bg-[#fafafa] dark:bg-[#111] h-[13rem] sm:h-auto lg:h-auto flex items-center px-[1.5rem] rounded-lg sm:py-[1.5rem] lg:py-[2rem]">
+        <div className="grid grid-cols-3 gap-x-[3rem] items-center sm:grid-cols-1 lg:grid-cols-1
+        text-gray-600 dark:text-gray-400">
+          <p className="text-[15px]  sm:mb-[1rem] lg:mb-[1rem]">
             Profile picture
           </p>
           <div
             className="flex flex-col justify-center items-center cursor-pointer 
-            bg-[#efebff] h-[100%] px-[1rem] py-[3.5rem] text-indigo-600 font-bold rounded-lg sm:h-full lg:h-full sm:w-[70%] lg:w-[70%]"
+            bg-[#efebff] dark:bg-[#222] h-[100%] px-[1rem] py-[3.5rem] text-indigo-600 font-bold rounded-lg sm:h-full lg:h-full sm:w-[70%] lg:w-[70%]"
             onClick={handleFileUpload}
           >
             {!loading ? (
@@ -52,7 +53,7 @@ const UserData = () => {
               <ImageLoading />
             )}
           </div>
-          <p className="text-[12px] text-gray-600 sm:mt-[1rem] lg:mt-[1rem]">
+          <p className="text-[12px]  sm:mt-[1rem] lg:mt-[1rem]">
             Image must be below 1024x1024px. Use PNG or JPG format.
           </p>
           <input
@@ -66,9 +67,12 @@ const UserData = () => {
         </div>
       </div>
 
-      <div className="bg-[#fafafa] h-[13rem] sm:h-auto lg:h-auto grid items-center px-[1.5rem] lg:py-[1rem] rounded-lg">
+      <div
+        className="bg-[#fafafa] dark:bg-[#111] h-[13rem] sm:h-auto 
+      text-gray-600 dark:text-gray-300 lg:h-auto grid items-center px-[1.5rem] lg:py-[1rem] rounded-lg"
+      >
         <div className="grid grid-cols-[6.7rem,auto] gap-x-[2rem] items-center sm:grid-cols-1 lg:grid-cols-1 gap-y-[1rem]">
-          <label htmlFor="fname" className="text-[.8rem] text-gray-600">
+          <label htmlFor="fname" className="text-[.8rem] ">
             Firstname
           </label>
           <input
@@ -76,6 +80,7 @@ const UserData = () => {
             name="fname"
             placeholder=".e.g. Rajarshi"
             className="w-[100%] p-[10px] border-[1px] border-gray-400
+            dark:bg-black dark:border-gray-600
             rounded-lg outline-[1px] outline-indigo-600"
             value={userProfile.fname}
             onChange={(e) => {
@@ -85,14 +90,14 @@ const UserData = () => {
         </div>
 
         <div className="grid grid-cols-[6.7rem,auto] gap-x-[2rem] items-center sm:grid-cols-1 gap-y-[1rem] lg:grid-cols-1">
-          <label htmlFor="lname" className="text-[.8rem] text-gray-600">
+          <label htmlFor="lname" className="text-[.8rem] ">
             Lastname
           </label>
           <input
             type="text"
             name="lname"
             placeholder=".e.g. Samaddar"
-            className="w-[100%] p-[10px] border-[1px] border-gray-400
+            className="w-[100%] p-[10px] border-[1px] border-gray-400 dark:bg-black dark:border-gray-600
             rounded-lg outline-[1px] outline-indigo-600"
             value={userProfile.lname}
             onChange={(e) => {
@@ -102,14 +107,14 @@ const UserData = () => {
         </div>
 
         <div className="grid grid-cols-[6.7rem,auto] gap-x-[2rem] items-center sm:grid-cols-1 gap-y-[1rem] lg:grid-cols-1">
-          <label htmlFor="bio" className="text-[.8rem] text-gray-600 w-full">
+          <label htmlFor="bio" className="text-[.8rem]  w-full">
             Add Bio
           </label>
           <input
             type="text"
             name="bio"
             placeholder=".e.g. Student"
-            className="w-[100%] p-[10px] border-[1px] border-gray-400
+            className="w-[100%] p-[10px] border-[1px] border-gray-400 dark:bg-black dark:border-gray-600
             rounded-lg outline-[1px] outline-indigo-600"
             value={userProfile.bio}
             onChange={(e) => {

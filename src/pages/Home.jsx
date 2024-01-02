@@ -8,7 +8,7 @@ const Home = () => {
   const links = useSelector((state) => state.global.links);
 
   return (
-    <>
+    <div>
       <Navbar isHome />
       <div
         className={`grid grid-cols-[31.5rem,auto]
@@ -21,7 +21,7 @@ const Home = () => {
           world!"
         />
       </div>
-    </>
+    </div>
   );
 };
 

@@ -22,9 +22,14 @@ export const updateUser = async (myUser, user) => {
           bio: myUser.bio,
         }
       );
-      if (response) toast.success("biodata updated");
+      if (response)
+        toast.success("biodata updated", {
+          className: "dark:bg-[#222] bg-white dark:text-white",
+        });
     } else {
-      toast.error("Provide all data");
+      toast.error("Provide all data", {
+        className: "dark:bg-[#222] bg-white dark:text-white",
+      });
     }
   } catch (error) {
     console.log(error);
@@ -36,7 +41,9 @@ export const uploadFile = async (files, user, userProfile, dispatch) => {
     const id = uuidv4();
     const response = await storage.createFile(BUCKET_ID, id, files);
     if (response) {
-      toast.success("successfully uploaded");
+      toast.success("successfully uploaded", {
+        className: "dark:bg-[#222] bg-white dark:text-white",
+      });
       storage.deleteFile(BUCKET_ID, userProfile.imageId);
       databases.updateDocument(DATABASE_ID, USERS_ID, user.$id, {
         image: id,
@@ -45,6 +52,9 @@ export const uploadFile = async (files, user, userProfile, dispatch) => {
     }
   } catch (error) {
     console.log(error);
-    toast.error("Failed to upload");
+    toast.error("Failed to upload",
+    {
+      className: "dark:bg-[#222] bg-white dark:text-white",
+    });
   }
 };

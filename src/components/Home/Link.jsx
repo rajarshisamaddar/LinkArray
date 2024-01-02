@@ -11,17 +11,18 @@ const Link = ({ item }) => {
   const [colorValue, setColorValue] = useState();
   return (
     <div
-      className="h-auto bg-[#fafafa] mt-[.8rem] first:mt-[0] p-[1rem] rounded-lg"
+      className="h-auto bg-[#fafafa] dark:bg-[#111] mt-[.8rem] text-gray-500
+       dark:text-gray-300 first:mt-[0] p-[1rem] rounded-lg"
       key={item.id}
     >
       <div className="flex justify-between">
-        <h3 className="flex gap-x-[.5rem] items-center font-bold text-gray-500">
+        <h3 className="flex gap-x-[.5rem] items-center font-bold">
           <LuEqual /> Link #{item.count}
         </h3>
         <h2
           className="cursor-pointer"
           onClick={() => {
-            deleteLinks(item.id)
+            deleteLinks(item.id);
             dispatch(removeLink(item));
           }}
         >
@@ -30,12 +31,13 @@ const Link = ({ item }) => {
       </div>
       <div className="mt-[1rem]">
         <div className="w-[100%]">
-          <label htmlFor="platformName" className="text-[.8rem] text-gray-500">
+          <label htmlFor="platformName" className="text-[.8rem] ">
             Platform
           </label>
           <input
             type="text"
-            className="w-[100%] border-[1.5px] border-gray-300 outline-none py-[.6rem] px-[1rem] rounded-lg my-[.5rem]"
+            className="w-[100%] border-[1.5px] border-gray-300 
+            dark:bg-black dark:border-gray-600 outline-none py-[.6rem] px-[1rem] rounded-lg my-[.5rem]"
             placeholder=".e.g Github"
             name="platformName"
             value={item.platform}
@@ -47,7 +49,7 @@ const Link = ({ item }) => {
         </div>
 
         <div className="w-[100%]">
-          <label htmlFor="link" className="text-[.8rem] text-gray-500">
+          <label htmlFor="link" className="text-[.8rem] ">
             Link
           </label>
           <input
@@ -58,13 +60,13 @@ const Link = ({ item }) => {
               const updateLinkUrl = { ...item, link: e.target.value };
               dispatch(updateLink(updateLinkUrl));
             }}
-            className="w-[100%] border-[1.5px] border-gray-300 outline-none py-[.6rem] px-[1rem] rounded-lg my-[.5rem]"
+            className="w-[100%] border-[1.5px] dark:bg-black dark:border-gray-600 border-gray-300 outline-none py-[.6rem] px-[1rem] rounded-lg my-[.5rem]"
             placeholder=".e.g https://github.com/jhon"
           />
         </div>
 
         <div className="w-[100%]">
-          <label htmlFor="link" className="text-[.8rem] text-gray-500">
+          <label htmlFor="link" className="text-[.8rem]">
             Background
           </label>
           <input
@@ -72,17 +74,17 @@ const Link = ({ item }) => {
             name="color"
             value={item.color ? item.color : colorValue}
             onChange={(e) => {
-              setColorValue(e.target.value)
+              setColorValue(e.target.value);
               const updateLinkColor = { ...item, color: e.target.value };
               dispatch(updateLink(updateLinkColor));
             }}
-            className="w-[100%] border-[1.5px] border-gray-300 outline-none py-[.6rem] px-[1rem] rounded-lg my-[.5rem]"
+            className="w-[100%] border-[1.5px] dark:bg-black dark:border-gray-600 border-gray-300 outline-none py-[.6rem] px-[1rem] rounded-lg my-[.5rem]"
             placeholder="baground color e.g.hexcode"
           />
         </div>
 
         <div className="w-[100%] ">
-          <label htmlFor="link" className="text-[.8rem] text-gray-500">
+          <label htmlFor="link" className="text-[.8rem]">
             Choose bg-color
           </label>
           <div className="mt-[.5rem] mb-[.5rem]">
