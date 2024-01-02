@@ -4,7 +4,7 @@ import ColorPicker from "../Profile/ColorPicker";
 import { useDispatch } from "react-redux";
 import { removeLink } from "../../redux/slices/global/globalSlice";
 import { updateLink } from "../../redux/slices/global/globalSlice";
-import { deleteDocument } from "../../CRUD/LinkCrud";
+import { deleteLinks } from "../../CRUD/LinkCrud";
 import Icon from "./Icon";
 const Link = ({ item }) => {
   const dispatch = useDispatch();
@@ -21,7 +21,7 @@ const Link = ({ item }) => {
         <h2
           className="cursor-pointer"
           onClick={() => {
-            deleteDocument(item.id)
+            deleteLinks(item.id)
             dispatch(removeLink(item));
           }}
         >

@@ -102,7 +102,7 @@ export const createLinks = async (links, user) => {
   }
 };
 
-export const deleteDocument = async (id) => {
+export const deleteLinks = async (id) => {
   try {
     const response = await databases.deleteDocument(DATABASE_ID, LINKS_ID, id);
     if (response) {
