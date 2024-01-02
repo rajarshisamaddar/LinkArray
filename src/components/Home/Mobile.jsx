@@ -1,5 +1,5 @@
 import React from "react";
-import MobileFrame from "../../assets/images/illustration-phone-mockup.svg";
+import MobileFrame from "../../assets/images/illustration-empty2.svg";
 import UserImage from "../../assets/images/avatar.png";
 import { FaArrowRight } from "react-icons/fa6";
 import { Link } from "react-router-dom";
@@ -13,8 +13,8 @@ const Mobile = ({ data }) => {
   return (
     <>
       <div
-        className="bg-white px-[4rem] py-[4rem] flex items-center justify-center mt-[1.8rem] 
-      rounded-[1rem] max-h-[115vh] mb:hidden sm:hidden"
+        className="bg-white dark:bg-black px-[4rem] py-[4rem] flex items-center justify-center mt-[1.8rem] 
+      rounded-[1rem] h-auto mb:hidden sm:hidden"
       >
         <div className="h-[100%] m-[2rem] flex-1 relative overflow-hidden">
           <div className="flex justify-center h-[100%]">

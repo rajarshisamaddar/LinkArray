@@ -7,9 +7,7 @@
   * {
     font-family: "Instrument Sans", sans-serif;
   }
-  body {
-    background: #fafafa;
-  }
+
 }
 @layer utilities{
   ::-webkit-scrollbar{

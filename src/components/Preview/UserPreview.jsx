@@ -4,9 +4,8 @@ import * as ReactFaIcons from "react-icons/fa6";
 import { FaArrowRight } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 const UserPreview = ({ user, image }) => {
-  console.log(image);
   return (
-    <div className="bg-white mb-[2rem] h-auto rounded-lg shadow-md mt-[6rem] w-[30%] mb:w-[50%] m-auto sm:w-[90%] relative p-[1rem]">
+    <div className="bg-white dark:bg-[#222] mb-[2rem] h-auto rounded-lg shadow-md mt-[6rem] w-[30%] mb:w-[50%] m-auto sm:w-[90%] relative p-[1rem]">
       <div className="flex justify-center">
         <img
           src={image !== "" ? image : UserImage}
@@ -14,10 +13,10 @@ const UserPreview = ({ user, image }) => {
           className="absolute top-[-4rem] h-[8rem] w-[8rem] rounded-full border-[2px] border-indigo-600"
         />
         <div className="mt-[4rem]">
-          <h2 className="text-[18px] font-bold text-center text-gray-400 mb-[.3rem]">
+          <h2 className="text-[18px] font-bold text-center text-gray-400 dark:text-gray-300 mb-[.3rem]">
             {user.fname} {user.lname}
           </h2>
-          <p className="text-center text-[13px] text-violet-600 mb-[.6rem]">
+          <p className="text-center text-[13px] text-violet-600 dark:text-violet-400 mb-[.6rem]">
             {user.bio}
           </p>
         </div>

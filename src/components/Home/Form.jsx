@@ -9,7 +9,8 @@ import { updateUser } from "../../CRUD/userCrud";
 import { v4 as uuidv4 } from "uuid";
 import { getLinks, createLinks } from "../../CRUD/LinkCrud";
 import { getImage } from "../../CRUD/LinkCrud";
-import { MdLogout } from "react-icons/md";
+import Logout from "../Theme/Logout";
+import ThemeSwitcher from "../Theme/ThemeSwitcher";
 
 const Form = ({ heading, description, isProfile = false }) => {
   const { user, logoutUser } = useAuth();
@@ -48,18 +49,18 @@ const Form = ({ heading, description, isProfile = false }) => {
 
   return (
     <div
-      className="bg-white h-[auto] mt-[1.8rem] rounded-[1rem] py-[1.4rem]  
-      sm:w-[96.5%] sm:m-auto sm:mt-[1rem] mb:w-[100%] mb:mt-[1rem]  mb:m-auto"
+      className="bg-white dark:bg-black h-[auto] mt-[1.8rem] rounded-[1rem] py-[1.4rem]  
+      sm:w-[96.5%] sm:m-auto sm:mt-[1rem] mb:w-[100%] mb:mt-[1rem]  mb:m-auto relative"
     >
       <div className="w-[90%] m-auto">
-        <h1 className="text-[32px] text-gray-700 font-bold sm:text-[24px] flex justify-between items-center">
+        <div className="justify-between items-center gap-x-2 flex mb-4">
+          <ThemeSwitcher />
+          <Logout />
+        </div>
+        <h1 className="text-[32px] text-gray-700 dark:text-gray-300 font-bold sm:text-[24px] flex justify-between items-center">
           {heading}
-          <MdLogout
-            className="cursor-pointer hover:text-rose-500 text-4xl sm:text-lg"
-            onClick={logoutUser}
-          />
         </h1>
-        <p className="text-[16px] text-gray-600 mt-[1rem] sm:mt-[0]">
+        <p className="text-[16px] text-gray-600 dark:text-gray-200 mt-[1rem] sm:mt-[0]">
           {description}
         </p>
         {isProfile ? (
@@ -67,7 +68,7 @@ const Form = ({ heading, description, isProfile = false }) => {
         ) : (
           <div>
             <div
-              className="mt-[2rem] w-[100%] hover:bg-violet-200 text-center border-[1.5px] border-blue-700 text-indigo-600
+              className="mt-[2rem] w-[100%] hover:bg-violet-200 dark:hover:bg-violet-300 text-center border-[1.5px] border-blue-700 text-indigo-600
         font-bold text-[16px] py-[.8rem] rounded-[.6rem]"
             >
               <button className="w-[100%]" onClick={addNewLink}>
@@ -86,7 +87,7 @@ const Form = ({ heading, description, isProfile = false }) => {
           </div>
         )}
       </div>
-      <p className="mt-[2rem] border-t-[.1rem] border-gray-300"></p>
+      <p className="mt-[2rem] border-t-[.1rem] border-gray-300 dark:border-gray-600"></p>
       <div className="flex justify-end mt-[2.4rem] w-[90%] m-auto sm:w-[80%]">
         <button
           className="bg-indigo-600 w-fit sm:w-[100%] px-[2.5rem] py-[.7rem] text-[16px] text-white rounded-[.6rem] 

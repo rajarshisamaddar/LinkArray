@@ -80,7 +80,9 @@ export const createLinks = async (links, user) => {
           }
         );
         if (response) {
-          toast.success("successfully created");
+          toast.success("successfully created", {
+            className: "dark:bg-[#222] bg-white dark:text-white",
+          });
         }
       } else {
         const response = await databases.updateDocument(
@@ -95,6 +97,11 @@ export const createLinks = async (links, user) => {
             rank: item.count,
           }
         );
+        if(item.db===true && response){
+          toast.success("successfully updated", {
+            className: "dark:bg-[#222] bg-white dark:text-white",
+          });
+        }
       }
     }
   } catch (error) {
@@ -106,7 +113,9 @@ export const deleteLinks = async (id) => {
   try {
     const response = await databases.deleteDocument(DATABASE_ID, LINKS_ID, id);
     if (response) {
-      toast.success("Successfully Removed");
+      toast.success("Successfully Removed", {
+        className: "dark:bg-black bg-white dark:text-white",
+      });
     }
   } catch (error) {
     console.log(error);

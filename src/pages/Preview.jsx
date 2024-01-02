@@ -12,6 +12,7 @@ import {
 import { Query } from "appwrite";
 import Loading from "../components/Loading/Loading";
 import { useAuth } from "../utils/AuthContext";
+import ThemeSwitcher from "../components/Theme/ThemeSwitcher";
 
 const Preview = () => {
   const Navigate = useNavigate();
@@ -19,7 +20,6 @@ const Preview = () => {
   const { username } = useParams();
 
   const { user } = useAuth();
-  console.log(user);
   const [userDetails, setUserDetails] = useState([]);
   const [image, setImage] = useState("");
   const [loading, setLoading] = useState(true);
@@ -58,6 +58,9 @@ const Preview = () => {
       {!loading && (
         <div>
           <PreviewNav />
+          <div className="mt-2 flex justify-end w-[94%] mb:w-[92%] sm:w-[90%] m-auto">
+            <ThemeSwitcher />
+          </div>
           <UserPreview user={userDetails} image={image} />
         </div>
       )}

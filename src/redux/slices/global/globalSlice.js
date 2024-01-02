@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
+  theme:"",
   email: "",
   links: [],
   user: {},
@@ -45,10 +46,14 @@ export const globalSlice = createSlice({
     addUserData: (state, action) => {
       state.user = { ...state.user, ...action.payload.user };
     },
+
+    addTheme:(state, action)=>{
+      state.theme=action.payload;
+    }
   },
 });
 
-export const { setUser, addLink, removeLink, updateLink, addUserData } =
+export const { setUser, addLink, removeLink, updateLink, addUserData, addTheme} =
   globalSlice.actions;
 
 export default globalSlice.reducer;
