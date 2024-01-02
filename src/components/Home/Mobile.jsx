@@ -30,11 +30,11 @@ const Mobile = ({ data }) => {
             </div>
 
             <div>
-              <h2 className="mt-[1rem] font-bold text-gray-500 text-center text-[1.1rem]">
+              <h2 className="mt-[1rem] font-bold text-gray-400 dark:text-gray-300 text-center text-[1.1rem]">
                 {user ? `${user.fname || ""}  ${user.lname || ""}` : ""}
               </h2>
 
-              <p className="mt-[.2rem] text-gray-800 text-center text-[.7rem]">
+              <p className="mt-[.2rem] text-violet-600 dark:text-violet-400 text-center text-[.7rem]">
                 {user ? `${user.bio || ""}` : ""}
               </p>
             </div>
