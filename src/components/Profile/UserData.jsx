@@ -1,11 +1,13 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { BsImage } from "react-icons/bs";
 import { addUserData } from "../../redux/slices/global/globalSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { uploadFile } from "../../CRUD/userCrud";
 import { useAuth } from "../../utils/AuthContext";
+import ImageLoading from "../Loading/ImageLoading";
 const UserData = () => {
   const fileInputRef = useRef(null);
+  const [loading, setLoading] = useState(false);
   const { user } = useAuth();
   const handleFileUpload = () => {
     fileInputRef.current.click();
@@ -13,6 +15,21 @@ const UserData = () => {
 
   const userProfile = useSelector((state) => state.global.user);
   const dispatch = useDispatch();
+
+  const handleImageUpload = async (e) => {
+    setLoading(true);
+    try {
+      if (e.target.files[0]) {
+        await uploadFile(e.target.files[0], user, userProfile, dispatch);
+      }
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="grid grid-rows-2 gap-y-[1.5rem] h-full mt-[3rem]">
@@ -26,8 +43,14 @@ const UserData = () => {
             bg-[#efebff] h-[100%] px-[1rem] py-[3.5rem] text-indigo-600 font-bold rounded-lg sm:h-full lg:h-full sm:w-[70%] lg:w-[70%]"
             onClick={handleFileUpload}
           >
-            <BsImage className="text-[2rem]" />
-            <p className="text-[15px] mt-[.7rem]">+ Upload Image</p>
+            {!loading ? (
+              <>
+                <BsImage className="text-[2rem]" />
+                <p className="text-[15px] mt-[.7rem]">+ Upload Image</p>
+              </>
+            ) : (
+              <ImageLoading />
+            )}
           </div>
           <p className="text-[12px] text-gray-600 sm:mt-[1rem] lg:mt-[1rem]">
             Image must be below 1024x1024px. Use PNG or JPG format.
@@ -36,8 +59,8 @@ const UserData = () => {
             type="file"
             ref={fileInputRef}
             className="hidden"
-            onChange={(e) => {
-              uploadFile(e.target.files[0], user, userProfile, dispatch);
+            onChange={async (e) => {
+              handleImageUpload(e);
             }}
           />
         </div>
