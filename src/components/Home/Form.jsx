@@ -9,8 +9,10 @@ import { updateUser } from "../../CRUD/userCrud";
 import { v4 as uuidv4 } from "uuid";
 import { getLinks, createLinks } from "../../CRUD/LinkCrud";
 import { getImage } from "../../CRUD/LinkCrud";
+import { MdLogout } from "react-icons/md";
+
 const Form = ({ heading, description, isProfile = false }) => {
-  const { user } = useAuth();
+  const { user, logoutUser } = useAuth();
   const dispatch = useDispatch();
   const links = useSelector((state) => state.global.links);
   const myUser = useSelector((state) => state.global.user);
@@ -50,8 +52,12 @@ const Form = ({ heading, description, isProfile = false }) => {
       sm:w-[96.5%] sm:m-auto sm:mt-[1rem] mb:w-[100%] mb:mt-[1rem]  mb:m-auto"
     >
       <div className="w-[90%] m-auto">
-        <h1 className="text-[32px] text-gray-700 font-bold sm:text-[24px]">
+        <h1 className="text-[32px] text-gray-700 font-bold sm:text-[24px] flex justify-between items-center">
           {heading}
+          <MdLogout
+            className="cursor-pointer hover:text-rose-500 text-4xl sm:text-lg"
+            onClick={logoutUser}
+          />
         </h1>
         <p className="text-[16px] text-gray-600 mt-[1rem] sm:mt-[0]">
           {description}
