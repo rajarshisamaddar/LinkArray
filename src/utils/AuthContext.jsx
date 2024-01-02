@@ -55,18 +55,17 @@ export const AuthProvider = ({ children }) => {
       );
 
       await account.createEmailSession(userInfo.email, userInfo.password);
-      let accountDetails = await account.get();
-      setUser(accountDetails);
-
       await account.updateName(userInfo.username);
-
       await databases.createDocument(DATABASE_ID, USERS_ID, response.$id, {
         username: `@${userInfo.username}`,
         email: userInfo.email,
         fname: "",
         lname: "",
         bio: "",
+        image: "",
       });
+      let accountDetails = await account.get();
+      setUser(accountDetails);
 
       navigate("/");
     } catch (error) {

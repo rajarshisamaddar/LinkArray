@@ -39,8 +39,10 @@ const Preview = () => {
   useEffect(() => {
     const getProfileImage = async () => {
       try {
-        const response = storage.getFileView(BUCKET_ID, userDetails.image);
-        if (response) setImage(response.href);
+        if (userDetails.image !== "") {
+          const response = storage.getFileView(BUCKET_ID, userDetails.image);
+          if (response) setImage(response.href);
+        }
       } catch (error) {
         console.log(error);
       }

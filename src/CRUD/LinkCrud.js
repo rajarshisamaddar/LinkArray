@@ -49,11 +49,13 @@ export const getLinks = async (dispatch, user) => {
 
 export const getImage = async (dispatch, myUser) => {
   try {
-    const response = storage.getFileView(BUCKET_ID, myUser.imageId);
-    if (response) {
-      dispatch(
-        addUserData({ user: { image: response.href ? response.href : "" } })
-      );
+    if (myUser.imageId !== "") {
+      const response = storage.getFileView(BUCKET_ID, myUser.imageId);
+      if (response) {
+        dispatch(
+          addUserData({ user: { image: response.href ? response.href : "" } })
+        );
+      }
     }
   } catch (error) {
     console.log(error);
