@@ -59,7 +59,7 @@ const Preview = () => {
         <div className="pb-8">
           <PreviewNav />
           <div className="mt-2 flex justify-end w-[94%] mb:w-[92%] sm:w-[90%] m-auto">
-            <ThemeSwitcher />
+            <ThemeSwitcher username={username} />
           </div>
           <UserPreview user={userDetails} image={image} />
         </div>
