@@ -35,6 +35,7 @@ const Form = ({ heading, description, isProfile = false }) => {
       link: "",
       color: "",
       icon: "",
+      file:false,
       db: false,
     };
     dispatch(addLink(newLink));

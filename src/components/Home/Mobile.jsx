@@ -5,6 +5,7 @@ import { FaArrowRight } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import * as ReactFaIcons from "react-icons/fa6";
+import { LuDownload } from "react-icons/lu";
 const Mobile = ({ data }) => {
   const user = useSelector((state) => state.global.user);
 
@@ -38,13 +39,13 @@ const Mobile = ({ data }) => {
                 {user ? `${user.bio || ""}` : ""}
               </p>
             </div>
-            <div className="mt-[2rem] mb-[-10rem] h-[60%] overflow-y-auto cursor-grab">
+            <div className="mt-[2rem] mb-[-10rem] h-[60%] overflow-y-auto">
               <ul>
                 {data.map((Item) => (
                   <li
                     className={`flex gap-x-[.7rem] mt-[.4rem] items-center  justify-between 
                       text-white w-[90%] lg:w-[80%] h-[100%] m-auto py-[.5rem] px-[1.5rem]
-                    rounded-lg text-[16px] lg:last:hidden cursor-pointer last:mb-4`}
+                    rounded-lg text-[16px] lg:last:hidden cursor-pointer last:mb-2`}
                     style={
                       Item.color
                         ? { backgroundColor: Item.color }
@@ -54,15 +55,13 @@ const Mobile = ({ data }) => {
                     onClick={(e) => (location.href = Item.link)}
                   >
                     <div className="flex gap-x-2 items-center">
-                        {ReactFaIcons[Item.icon] &&
-                          ReactFaIcons[Item.icon]({
-                            className: "text-[20px]",
-                          })}
+                      {ReactFaIcons[Item.icon] &&
+                        ReactFaIcons[Item.icon]({
+                          className: "text-[20px]",
+                        })}
                       <Link className="text-[16px]">{Item.platform}</Link>
                     </div>
-                    <div>
-                      <FaArrowRight />
-                    </div>
+                    <div>{Item.file ? <LuDownload /> : <FaArrowRight />}</div>
                   </li>
                 ))}
               </ul>

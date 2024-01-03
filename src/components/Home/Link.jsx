@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import { LuEqual } from "react-icons/lu";
 import ColorPicker from "../Profile/ColorPicker";
 import { useDispatch } from "react-redux";
-import { removeLink } from "../../redux/slices/global/globalSlice";
+import { addLink, removeLink } from "../../redux/slices/global/globalSlice";
 import { updateLink } from "../../redux/slices/global/globalSlice";
 import { deleteLinks } from "../../CRUD/LinkCrud";
+import { FaCircle } from "react-icons/fa";
 import Icon from "./Icon";
 const Link = ({ item }) => {
   const dispatch = useDispatch();
@@ -30,6 +31,33 @@ const Link = ({ item }) => {
         </h2>
       </div>
       <div className="mt-[1rem]">
+        <div className="w-[100%] z-[10]">
+          <div className="flex items-center gap-x-2">
+            <p>File</p>
+            <div
+              className={`my-2 h-[1.4rem] w-[3rem] border-[.1rem] py-1
+              rounded-[5rem]  cursor-pointer 
+              ${!item.file ? "bg-gray-300 border-gray-800" :"bg-indigo-100 border-blue-800 "}`}
+              onClick={() => {
+                dispatch(updateLink({ ...item, file: !item.file }));
+              }}
+            >
+              <div
+                className={`flex items-center h-[100%] pb-[.015rem] px-[.2rem]
+                ${
+                  item.file ? "justify-end" : "justify-start"
+                } transition-opacity duration-300 ease-in-out`}
+              >
+                <FaCircle
+                  className={`text-base
+                ${
+                  item.file ? "text-blue-800" : "dark:text-black text-gray-500"
+                }`}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
         <div className="w-[100%]">
           <label htmlFor="platformName" className="text-[.8rem] ">
             Platform
@@ -51,7 +79,7 @@ const Link = ({ item }) => {
 
         <div className="w-[100%]">
           <label htmlFor="link" className="text-[.8rem] ">
-            Link
+            {item.file ? "File Link" : "Link"}
           </label>
           <input
             maxLength={512}

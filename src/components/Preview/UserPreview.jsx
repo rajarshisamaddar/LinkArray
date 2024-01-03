@@ -8,6 +8,7 @@ import { FiGithub } from "react-icons/fi";
 import { FaCode } from "react-icons/fa6";
 import { FaIndianRupeeSign } from "react-icons/fa6";
 import { Link } from "react-router-dom";
+import { LuDownload } from "react-icons/lu";
 const UserPreview = ({ user, image }) => {
   return (
     <div className="bg-white dark:bg-[#222] mb-[2rem] h-auto rounded-lg shadow-md mt-[6rem] w-[30%] mb:w-[50%] m-auto sm:w-[90%] relative p-[1rem]">
@@ -72,7 +73,7 @@ const UserPreview = ({ user, image }) => {
                 {link.platformName}
               </h3>
             </div>
-            <FiExternalLink size={22} />
+            {link.file ? <LuDownload size={22} /> : <FiExternalLink size={22} />}
           </Link>
         ))}
       </div>
