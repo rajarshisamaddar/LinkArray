@@ -35,9 +35,9 @@ const Link = ({ item }) => {
           <div className="flex items-center gap-x-2">
             <p>File</p>
             <div
-              className={`my-2 h-[1.4rem] w-[3rem] border-[.1rem] py-1
+              className={`my-2 h-[1.4rem] w-[3rem] py-1
               rounded-[5rem]  cursor-pointer 
-              ${!item.file ? "bg-gray-300 border-gray-800" :"bg-indigo-100 border-blue-800 "}`}
+              ${!item.file ? "bg-gray-500" :"bg-blue-600"}`}
               onClick={() => {
                 dispatch(updateLink({ ...item, file: !item.file }));
               }}
@@ -49,10 +49,7 @@ const Link = ({ item }) => {
                 } transition-opacity duration-300 ease-in-out`}
               >
                 <FaCircle
-                  className={`text-base
-                ${
-                  item.file ? "text-blue-800" : "dark:text-black text-gray-500"
-                }`}
+                  className={`text-base text-white`}
                 />
               </div>
             </div>
