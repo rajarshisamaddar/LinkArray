@@ -44,7 +44,7 @@ const Mobile = ({ data }) => {
                   <li
                     className={`flex gap-x-[.7rem] mt-[.4rem] items-center  justify-between 
                       text-white w-[90%] lg:w-[80%] h-[100%] m-auto py-[.5rem] px-[1.5rem]
-                    rounded-lg text-[16px] lg:last:hidden cursor-pointer`}
+                    rounded-lg text-[16px] lg:last:hidden cursor-pointer last:mb-4`}
                     style={
                       Item.color
                         ? { backgroundColor: Item.color }
