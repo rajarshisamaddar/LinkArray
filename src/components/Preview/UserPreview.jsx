@@ -1,7 +1,6 @@
 import React from "react";
 import UserImage from "../../assets/images/avatar.png";
 import * as ReactFaIcons from "react-icons/fa6";
-import { FaArrowRight } from "react-icons/fa6";
 import { FiExternalLink } from "react-icons/fi";
 import { MdVerified } from "react-icons/md";
 import { FiGithub } from "react-icons/fi";
@@ -9,6 +8,7 @@ import { FaCode } from "react-icons/fa6";
 import { FaIndianRupeeSign } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import { LuDownload } from "react-icons/lu";
+
 const UserPreview = ({ user, image }) => {
   return (
     <div className="bg-white dark:bg-[#222] mb-[2rem] h-auto rounded-lg shadow-md mt-[6rem] w-[30%] mb:w-[50%] m-auto sm:w-[90%] relative p-[1rem]">
@@ -21,10 +21,17 @@ const UserPreview = ({ user, image }) => {
         <div className="mt-[4rem]">
           {(user.admin && (
             <div className="flex uppercase items-center justify-center text-[18px] font-bold text-center text-gray-700 dark:text-gray-300 mb-[.3rem]">
-              <h2>
+              <h2 style={{ display: "inline-block" }}>
                 {user.fname} {user.lname}
               </h2>
-              <MdVerified className="ml-1 text-blue-500" />
+              <MdVerified
+                className="ml-1 text-blue-500"
+                style={{
+                  position: "relative",
+                  top: "-0.5em",
+                  fontSize: "0.75em",
+                }}
+              />
             </div>
           )) || (
             <h2 className="text-[18px] uppercase font-bold text-center text-gray-700 dark:text-gray-300 mb-[.3rem]">
