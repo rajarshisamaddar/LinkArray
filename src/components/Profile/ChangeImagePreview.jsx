@@ -5,12 +5,12 @@ const ChangeImagePreview = ({preview, userProfile,loading}) => {
   return (
     <div
       className="flex justify-center items-center cursor-pointer 
-bg-[#efebff] dark:bg-[#222] h-[10rem] w-[10rem] overflow-hidden relative"
+bg-[#efebff] dark:bg-[#222] h-[10rem] w-[10rem] overflow-hidden rounded-lg relative"
     >
       <img
         src={preview ? preview : userProfile.image}
         alt="preview"
-        className="h-full w-full opacity-80"
+        className="h-full w-full opacity-80 "
       />
 
       <div
