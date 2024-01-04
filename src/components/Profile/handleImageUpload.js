@@ -23,7 +23,7 @@ export const handleImageUpload = async (
       await uploadFile(e.target.files[0], user, userProfile, dispatch);
     }
   } catch (error) {
-    console.log(error);
+    // console.log(error);
     setLoading(false);
   } finally {
     setLoading(false);

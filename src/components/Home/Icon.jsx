@@ -9,12 +9,12 @@ const Icon = ({ item }) => {
     <>
       <div className="w-[30%] lg:w-[50%]">
         <button
-          className="my-[.5rem] bg-violet-400 px-[1rem] py-[.5rem] h-fit text-[15px] text-white 
-          font-bold rounded-lg
+          className="my-[.5rem] bg-violet-500 dark:bg-violet-600 px-[1rem] py-[.5rem] h-fit text-[15px] text-white 
+          font-medium rounded-lg
         "
           onClick={(e) => setShowIcon(true)}
         >
-          Choose icon
+          Select icon
         </button>
       </div>
       <div

@@ -44,9 +44,9 @@ function SignUp() {
         <div className="flex flex-col mt-4">
           <label className="text-sm font-thin">Username</label>
           <input
-            title="Username can be 5 to 20 alpha characters"
+            title="Username can be 5 to 20 alphanumeric characters"
             className="border rounded-md h-10 p-4 mt-1 bg-transparent focus:outline-indigo-600"
-            placeholder="rahulinks"
+            placeholder="rahuldev"
             type="username"
             pattern="[A-Za-z0-9]{5,20}"
             required
@@ -62,7 +62,7 @@ function SignUp() {
           <input
             title="Email must be in format of name@email.com"
             className="border rounded-md h-10 p-4 mt-1 bg-transparent focus:outline-indigo-600"
-            placeholder="rahul@email.com"
+            placeholder="rahuldev@email.com"
             type="email"
             pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
             required

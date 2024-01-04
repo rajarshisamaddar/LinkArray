@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { addLink, removeLink } from "../../redux/slices/global/globalSlice";
 import { updateLink } from "../../redux/slices/global/globalSlice";
 import { deleteLinks } from "../../CRUD/LinkCrud";
-import { FaCircle } from "react-icons/fa";
+import { FaHashtag } from "react-icons/fa";
 import Icon from "./Icon";
 const Link = ({ item }) => {
   const dispatch = useDispatch();
@@ -13,7 +13,7 @@ const Link = ({ item }) => {
   return (
     <div
       className="h-auto bg-[#fafafa] dark:bg-[#111] mt-[.8rem] text-gray-500
-       dark:text-gray-300 first:mt-[0] p-[1rem] rounded-lg"
+        dark:text-gray-300 first:mt-[0] p-[1rem] rounded-lg"
       key={item.id}
     >
       <div className="flex justify-between">
@@ -31,39 +31,57 @@ const Link = ({ item }) => {
         </h2>
       </div>
       <div className="mt-[1rem]">
-        <div className="w-[100%] z-[10]">
-          <div className="flex items-center gap-x-2">
-            <p>File</p>
-            <div
-              className={`my-2 h-[1.4rem] w-[3rem] py-1
-              rounded-[5rem]  cursor-pointer 
-              ${!item.file ? "bg-gray-500" :"bg-blue-600"}`}
-              onClick={() => {
-                dispatch(updateLink({ ...item, file: !item.file }));
-              }}
-            >
-              <div
-                className={`flex items-center h-[100%] pb-[.015rem] px-[.2rem]
-                ${
-                  item.file ? "justify-end" : "justify-start"
-                } transition-opacity duration-300 ease-in-out`}
-              >
-                <FaCircle
-                  className={`text-base text-white`}
+        <div className="mt-[1rem]">
+          <div className="w-[100%] z-[10]">
+            <p className="text-[0.8rem]">Downloadable</p>
+            <div className="flex items-center gap-x-2 mt-[.5rem]">
+              <div className="flex items-center gap-x-1">
+                <p>Yes</p>
+                <input
+                  className={`w-4 h-4 appearance-none ${
+                    item.file
+                      ? "bg-violet-500 dark:bg-violet-600"
+                      : "bg-violet-200s"
+                  } rounded-xl`}
+                  type="checkbox"
+                  checked={item.file}
+                  onChange={() => {
+                    if (!item.file) {
+                      dispatch(updateLink({ ...item, file: true }));
+                    }
+                  }}
+                />
+              </div>
+              <div className="flex items-center gap-x-1">
+                <p>No</p>
+                <input
+                  className={`w-4 h-4 appearance-none ${
+                    !item.file
+                      ? "bg-violet-500 dark:bg-violet-600"
+                      : "bg-violet-200"
+                  } rounded-xl`}
+                  type="checkbox"
+                  checked={!item.file}
+                  onChange={() => {
+                    if (item.file) {
+                      dispatch(updateLink({ ...item, file: false }));
+                    }
+                  }}
                 />
               </div>
             </div>
           </div>
         </div>
-        <div className="w-[100%]">
+
+        <div className="w-[100%] mt-[.5rem]">
           <label htmlFor="platformName" className="text-[.8rem] ">
-            Platform
+            Title
           </label>
           <input
             maxLength={64}
             type="text"
             className="w-[100%] border-[1.5px] border-gray-300 
-            dark:bg-black dark:border-gray-600 outline-none py-[.6rem] px-[1rem] rounded-lg my-[.5rem]"
+              dark:bg-black dark:border-gray-600 outline-none py-[.6rem] px-[1rem] rounded-lg my-[.5rem]"
             placeholder=".e.g Github"
             name="platformName"
             value={item.platform}
@@ -76,7 +94,7 @@ const Link = ({ item }) => {
 
         <div className="w-[100%]">
           <label htmlFor="link" className="text-[.8rem] ">
-            {item.file ? "File Link" : "Link"}
+            {item.file ? "Download link" : "Link to"}
           </label>
           <input
             maxLength={512}
@@ -94,26 +112,34 @@ const Link = ({ item }) => {
 
         <div className="w-[100%]">
           <label htmlFor="link" className="text-[.8rem]">
-            Background
+            Background hex code
           </label>
-          <input
-            max={10}
-            type="text"
-            name="color"
-            value={item.color ? item.color : colorValue}
-            onChange={(e) => {
-              setColorValue(e.target.value);
-              const updateLinkColor = { ...item, color: e.target.value };
-              dispatch(updateLink(updateLinkColor));
-            }}
-            className="w-[100%] border-[1.5px] dark:bg-black dark:border-gray-600 border-gray-300 outline-none py-[.6rem] px-[1rem] rounded-lg my-[.5rem]"
-            placeholder="baground color e.g.hexcode"
-          />
+          <div className="flex items-center border-[1.5px] dark:bg-black dark:border-gray-600 border-gray-300 outline-none py-[.6rem] px-[1rem] rounded-lg my-[.5rem]">
+            <FaHashtag
+              className="text-gray-600 mr-1 dark:text-gray-300"
+              size={20}
+            />
+            <input
+              type="text"
+              name="color"
+              value={item.color ? item.color.slice(1) : colorValue.slice(1)}
+              onChange={(e) => {
+                let newColor = "#" + e.target.value;
+                if (newColor.length <= 7) {
+                  setColorValue(newColor);
+                  const updateLinkColor = { ...item, color: newColor };
+                  dispatch(updateLink(updateLinkColor));
+                }
+              }}
+              className="w-[100%] bg-transparent outline-none uppercase"
+              placeholder="background color e.g. hexcode"
+            />
+          </div>
         </div>
 
         <div className="w-[100%] ">
           <label htmlFor="link" className="text-[.8rem]">
-            Choose bg-color
+            Choose background color
           </label>
           <div className="mt-[.5rem] mb-[.5rem]">
             <ColorPicker

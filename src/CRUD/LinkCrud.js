@@ -37,14 +37,14 @@ export const getLinks = async (dispatch, user) => {
             link: link.link,
             color: link.color,
             icon: link.icon,
-            file:link.file,
+            file: link.file,
             db: true,
           })
         );
       });
     }
   } catch (error) {
-    console.log(error);
+    // console.log(error);
   }
 };
 
@@ -59,7 +59,7 @@ export const getImage = async (dispatch, myUser) => {
       }
     }
   } catch (error) {
-    console.log(error);
+    // console.log(error);
   }
 };
 
@@ -68,6 +68,12 @@ export const createLinks = async (links, user) => {
   let updated = 0;
   try {
     for (const item of links) {
+      // Validate hex color code
+      const isValidColor = /^#([0-9A-F]{3}){1,2}$/i.test(item.color);
+      if (!isValidColor) {
+        throw new Error(`Invalid color code: ${item.color}`);
+      }
+
       if (item.db === false) {
         const response = await databases.createDocument(
           DATABASE_ID,
@@ -79,8 +85,8 @@ export const createLinks = async (links, user) => {
             icon: item.icon,
             color: item.color,
             rank: item.count,
-            user:user.$id,
-            file:item.file
+            user: user.$id,
+            file: item.file,
           }
         );
         if (response) {
@@ -97,7 +103,7 @@ export const createLinks = async (links, user) => {
             icon: item.icon,
             color: item.color,
             rank: item.count,
-            file:item.file
+            file: item.file,
           }
         );
         if (item.db === true && response) {
@@ -112,7 +118,7 @@ export const createLinks = async (links, user) => {
       }
     );
   } catch (error) {
-    toast.error("An error occurred while saving links", {
+    toast.error(`An error occurred while saving links: ${error.message}`, {
       className: "dark:bg-[#222] bg-white dark:text-white",
     });
   }
@@ -127,6 +133,6 @@ export const deleteLinks = async (id) => {
       });
     }
   } catch (error) {
-    console.log(error);
+    // console.log(error);
   }
 };

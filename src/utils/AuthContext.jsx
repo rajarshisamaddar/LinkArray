@@ -24,17 +24,17 @@ export const AuthProvider = ({ children }) => {
   const loginUser = async (userInfo) => {
     setLoading(true);
 
-    console.log("userInfo", userInfo);
-
     try {
       let response = await account.createEmailSession(
         userInfo.email,
         userInfo.password
       );
+      // console.log("Response:", response); // Log the response
+
       let accountDetails = await account.get();
       setUser(accountDetails);
     } catch (error) {
-      console.error(error);
+      window.alert(error.message);
     }
     setLoading(false);
   };
@@ -63,7 +63,7 @@ export const AuthProvider = ({ children }) => {
         lname: "",
         bio: "",
         image: "",
-        theme:""
+        theme: "",
       });
       let accountDetails = await account.get();
       setUser(accountDetails);

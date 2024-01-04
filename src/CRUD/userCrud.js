@@ -32,7 +32,7 @@ export const updateUser = async (myUser, user) => {
       });
     }
   } catch (error) {
-    console.log(error);
+    // console.log(error);
   }
 };
 
@@ -51,7 +51,7 @@ export const uploadFile = async (files, user, userProfile, dispatch) => {
       dispatch(addUserData({ user: { imageId: id } }));
     }
   } catch (error) {
-    console.log(error);
+    // console.log(error);
     toast.error("Failed to upload", {
       className: "dark:bg-[#222] bg-white dark:text-white",
     });

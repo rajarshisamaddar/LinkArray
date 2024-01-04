@@ -16,7 +16,7 @@ const ThemeSwitcher = ({ username }) => {
       getTheme(dispatch, user);
     } else {
       if (username) {
-        getUserTheme(username, dispatch)
+        getUserTheme(username, dispatch);
       }
     }
   }, []);

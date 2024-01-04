@@ -20,6 +20,6 @@ export const getTheme = async (dispatch, user) => {
       }
     }
   } catch (error) {
-    console.log(error);
+    // console.log(error);
   }
 };

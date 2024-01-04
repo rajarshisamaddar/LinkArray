@@ -46,7 +46,7 @@ const Preview = () => {
           if (response) setImage(response.href);
         }
       } catch (error) {
-        console.log(error);
+        // console.log(error);
       }
     };
     getProfileImage();
