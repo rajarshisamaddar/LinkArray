@@ -28,7 +28,7 @@ const UserDetails = () => {
         />
       </div>
 
-      <div className="grid grid-cols-[6.7rem,auto] gap-x-[2rem] items-center sm:grid-cols-1 gap-y-[1rem] lg:grid-cols-1">
+      <div className="grid grid-cols-[6.7rem,auto] gap-x-[2rem] items-center sm:grid-cols-1 gap-y-[1rem] lg:grid-cols-1 sm:mt-[1rem] lg:mt-[1rem]">
         <label htmlFor="lname" className="text-[.8rem] ">
           Lastname
         </label>
@@ -46,7 +46,7 @@ const UserDetails = () => {
         />
       </div>
 
-      <div className="grid grid-cols-[6.7rem,auto] gap-x-[2rem] items-center sm:grid-cols-1 gap-y-[1rem] lg:grid-cols-1">
+      <div className="grid grid-cols-[6.7rem,auto] gap-x-[2rem] items-center sm:grid-cols-1 gap-y-[1rem] lg:grid-cols-1 sm:mt-[1rem] lg:mt-[1rem]">
         <label htmlFor="bio" className="text-[.8rem]  w-full">
           Add Bio
         </label>

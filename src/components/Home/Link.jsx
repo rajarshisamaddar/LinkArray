@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { LuEqual } from "react-icons/lu";
 import ColorPicker from "../Profile/ColorPicker";
 import { useDispatch } from "react-redux";
-import { addLink, removeLink } from "../../redux/slices/global/globalSlice";
+import { removeLink } from "../../redux/slices/global/globalSlice";
 import { updateLink } from "../../redux/slices/global/globalSlice";
 import { deleteLinks } from "../../CRUD/LinkCrud";
 import { FaHashtag } from "react-icons/fa";
@@ -41,7 +41,7 @@ const Link = ({ item }) => {
                   className={`w-4 h-4 appearance-none ${
                     item.file
                       ? "bg-violet-500 dark:bg-violet-600"
-                      : "bg-violet-200s"
+                      : "bg-violet-200"
                   } rounded-xl`}
                   type="checkbox"
                   checked={item.file}
