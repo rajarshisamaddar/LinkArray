@@ -37,6 +37,7 @@ export const getLinks = async (dispatch, user) => {
             link: link.link,
             color: link.color,
             icon: link.icon,
+            file:link.file,
             db: true,
           })
         );
@@ -78,7 +79,8 @@ export const createLinks = async (links, user) => {
             icon: item.icon,
             color: item.color,
             rank: item.count,
-            user: user.$id,
+            user:user.$id,
+            file:item.file
           }
         );
         if (response) {
@@ -95,6 +97,7 @@ export const createLinks = async (links, user) => {
             icon: item.icon,
             color: item.color,
             rank: item.count,
+            file:item.file
           }
         );
         if (item.db === true && response) {
