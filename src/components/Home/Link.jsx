@@ -119,10 +119,17 @@ const Link = ({ item }) => {
               className="text-gray-600 mr-1 dark:text-gray-300"
               size={20}
             />
+
             <input
               type="text"
               name="color"
-              value={item.color ? item.color.slice(1) : colorValue.slice(1)}
+              value={
+                item.color
+                  ? item.color.slice(1)
+                  : colorValue
+                  ? colorValue.slice(1)
+                  : ""
+              }
               onChange={(e) => {
                 let newColor = "#" + e.target.value;
                 if (newColor.length <= 7) {
@@ -131,7 +138,7 @@ const Link = ({ item }) => {
                   dispatch(updateLink(updateLinkColor));
                 }
               }}
-              className="w-[100%] bg-transparent outline-none uppercase"
+              className="w-[100%] bg-transparent outline-none uppercase placeholder:lowercase"
               placeholder="background color e.g. hexcode"
             />
           </div>
