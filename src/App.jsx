@@ -1,5 +1,6 @@
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
+import ForgotPassword from "./pages/ForgotPassword";
 import NotFound from "./pages/NotFound";
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
@@ -20,6 +21,7 @@ function App() {
           </Route>
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/sign-in" element={<SignIn />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/:username" element={<Preview />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

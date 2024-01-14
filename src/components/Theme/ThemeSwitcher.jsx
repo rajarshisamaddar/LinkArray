@@ -52,9 +52,9 @@ const ThemeSwitcher = ({ username }) => {
       <button className={`cursor-pointer text-2xl sm:text-lg  flex `}>
         <p>
           {theme === "light" ? (
-            <MdDarkMode className="text-indigo-500" />
-          ) : (
             <PiSunFill className="text-amber-300" />
+          ) : (
+            <MdDarkMode className="text-indigo-500" />
           )}
         </p>
       </button>

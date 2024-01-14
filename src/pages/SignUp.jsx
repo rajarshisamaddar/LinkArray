@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import Logo from "../assets/images/logo.svg";
+import Logo from "../assets/images/logo-dark.svg";
 import { useAuth } from "../utils/AuthContext";
 
 function SignUp() {
@@ -34,7 +34,7 @@ function SignUp() {
       className="flex bg-gradient-to-b from-violet-100 to-gray-50 text-gray-500 h-screen"
       onSubmit={handleSubmit}
     >
-      <div className="m-auto border p-8 bg-white/30 rounded-2xl backdrop-blur-lg">
+      <div className="m-auto border w-[28rem] p-8 bg-white/30 rounded-2xl backdrop-blur-lg">
         <img className="mx-auto" src={Logo} width="150px"></img>
         <h3 className="font-semibold text-xl mt-8">Create account</h3>
         <p className="text-lg mt-1">

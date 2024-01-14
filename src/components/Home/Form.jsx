@@ -35,7 +35,7 @@ const Form = ({ heading, description, isProfile = false }) => {
       link: "",
       color: "",
       icon: "",
-      file:false,
+      file: false,
       db: false,
     };
     dispatch(addLink(newLink));
@@ -111,8 +111,8 @@ const Form = ({ heading, description, isProfile = false }) => {
               <Empty />
             ) : (
               <div className="h-96 overflow-y-auto mb:h-auto mt-[2rem] sm:w-[100%] pr-[2rem] mb:pr-0">
-                {links.map((item) => (
-                  <Link key={item.id} item={item} />
+                {links.map((item, index) => (
+                  <Link key={item.id} item={item} index={index} />
                 ))}
               </div>
             )}

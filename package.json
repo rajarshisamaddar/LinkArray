@@ -1,8 +1,23 @@
 {
-  "name": "devlink",
-  "private": true,
-  "version": "0.0.0",
+  "name": "linkarray",
+  "description": "linkArray is a link-sharing platform. It allows you to share links with your friends and family.",
+  "author": "Rajarshi Samaddar | Soumayadip Saha",
+  "private": false,
+  "version": "1.0.3",
   "type": "module",
+  "license": "MIT",
+  "homepage": "https://linkarray.vercel.app",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rajarshisamaddar/LinkArray"
+  },
+  "keywords": [
+    "linkarray",
+    "link",
+    "sharing",
+    "platform",
+    "linkarray.vercel.app"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "vite build",

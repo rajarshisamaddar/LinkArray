@@ -7,7 +7,7 @@ import { updateLink } from "../../redux/slices/global/globalSlice";
 import { deleteLinks } from "../../CRUD/LinkCrud";
 import { FaHashtag } from "react-icons/fa";
 import Icon from "./Icon";
-const Link = ({ item }) => {
+const Link = ({ item, index }) => {
   const dispatch = useDispatch();
   const [colorValue, setColorValue] = useState();
   return (
@@ -18,7 +18,7 @@ const Link = ({ item }) => {
     >
       <div className="flex justify-between">
         <h3 className="flex gap-x-[.5rem] items-center font-bold">
-          <LuEqual /> Link #{item.count}
+          <LuEqual /> Link #{index + 1}
         </h3>
         <h2
           className="cursor-pointer"

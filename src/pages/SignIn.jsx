@@ -1,4 +1,4 @@
-import Logo from "../assets/images/logo.svg";
+import Logo from "../assets/images/logo-dark.svg";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../utils/AuthContext";
@@ -7,6 +7,7 @@ function SignIn() {
   const { user, loginUser } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isGuest, setIsGuest] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -21,12 +22,24 @@ function SignIn() {
     loginUser(userInfo);
   };
 
+  const handleGuest = () => {
+    if (isGuest) {
+      setIsGuest(false);
+      setEmail("");
+      setPassword("");
+      return;
+    }
+    setIsGuest(true);
+    setEmail("rahuldev@email.com");
+    setPassword("impK6LXKm9@Pch");
+  };
+
   return (
     <form
       className="flex bg-gradient-to-b from-violet-100 to-gray-50 text-gray-500 h-screen"
       onSubmit={handleSubmit}
     >
-      <div className="m-auto border p-8 bg-white/30 rounded-2xl backdrop-blur-lg">
+      <div className="m-auto border p-8 w-[28rem] bg-white/30 rounded-2xl backdrop-blur-lg">
         <img className="mx-auto" src={Logo} width="150px"></img>
         <h3 className="font-semibold text-xl mt-8">Sign In</h3>
         <p className="text-lg mt-1">Enter your details below to get back</p>
@@ -66,6 +79,21 @@ function SignIn() {
         <button className="w-full mt-6 p-4 text-white rounded-md font-bold bg-gradient-to-l from-indigo-600 via-blue-700 to-indigo-600">
           Sign In
         </button>
+        <p hidden={!isGuest} className="text-sm mt-2 text-lime-500">
+          Now click on the Sign In button to continue as a guest
+        </p>
+        <div
+          className="w-full mt-2 p-4 text-white text-center cursor-pointer rounded-md font-bold bg-gradient-to-l from-rose-600 via-rose-700 to-indigo-600"
+          onClick={handleGuest}
+        >
+          {isGuest ? "Remove Guest Access" : "Get Guest Access"}
+        </div>
+
+        <p className="text-center mt-4 font-medium">
+          <a className="text-indigo-500 font-semibold" href="/forgot-password">
+            Forgot your password?
+          </a>
+        </p>
 
         <p className="text-center mt-4 font-medium">
           Don't have an account?{" "}
