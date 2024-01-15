@@ -16,11 +16,11 @@ const UserPreview = ({ user, image }) => {
         <img
           src={image !== "" ? image : UserImage}
           alt=""
-          className="absolute top-[-4rem] h-[8rem] w-[8rem] rounded-full border-[4px] border-indigo-600 dark:border-indigo-400"
+          className="absolute top-[-4rem] h-[8rem] w-[8rem] rounded-full border-[4px] border-indigo-600 dark:border-indigo-400 select-none"
         />
         <div className="mt-[4rem]">
           {(user.admin && (
-            <div className="flex uppercase items-center justify-center text-[18px] font-bold text-center text-gray-700 dark:text-gray-300 mb-[.3rem]">
+            <div className="flex uppercase items-center justify-center text-[18px] font-bold text-center text-slate-800 dark:text-slate-300 mb-[.3rem]">
               <h2 style={{ display: "inline-block" }}>
                 {user.fname} {user.lname}
               </h2>
@@ -34,7 +34,7 @@ const UserPreview = ({ user, image }) => {
               />
             </div>
           )) || (
-            <h2 className="text-[18px] uppercase font-bold text-center text-gray-700 dark:text-gray-300 mb-[.3rem]">
+            <h2 className="text-[18px] uppercase font-bold text-center text-slate-800 dark:text-slate-300 mb-[.3rem]">
               {user.fname} {user.lname}
             </h2>
           )}
@@ -55,7 +55,7 @@ const UserPreview = ({ user, image }) => {
             </div>
           )}
 
-          <p className="text-center text-[13px] text-violet-800 dark:text-violet-400 mb-[.6rem]">
+          <p className="text-center text-[13px] text-gray-800 dark:text-gray-300 mb-[.6rem]">
             {user.bio}
           </p>
         </div>
@@ -80,7 +80,11 @@ const UserPreview = ({ user, image }) => {
                 {link.platformName}
               </h3>
             </div>
-            {link.file ? <LuDownload size={22} /> : <FiExternalLink size={22} />}
+            {link.file ? (
+              <LuDownload size={22} />
+            ) : (
+              <FiExternalLink size={22} />
+            )}
           </Link>
         ))}
       </div>

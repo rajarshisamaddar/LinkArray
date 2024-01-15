@@ -7,16 +7,18 @@
   * {
     font-family: "Instrument Sans", sans-serif;
   }
-
 }
-@layer utilities{
-  ::-webkit-scrollbar{
-    width: .4rem;
+@layer utilities {
+  ::-webkit-scrollbar {
+    width: 0.4rem;
   }
-  ::-webkit-scrollbar-thumb{
+  ::-webkit-scrollbar-thumb {
     background: #5b5b5b;
     border-radius: 1rem;
     cursor: pointer;
-
   }
+}
+
+* {
+  user-select: none;
 }
