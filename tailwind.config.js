@@ -1,25 +1,18 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+export default {
   darkMode: "class",
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {
-      screens: {
-        lg: { max: "1024px" },
-        mb: { max: "991px" },
-        sm: { max: "639px" },
-      },
+    extend: {},
+    screens: {
+      lg: { max: "1024px" },
+      // => @media (max-width: 1023px) { ... }
+
+      mb: { max: "991px" },
+      // => @media (max-width: 767px) { ... }
+
+      sm: { max: "639px" },
     },
   },
   plugins: [],
-  corePlugins: {
-    userSelect: false,
-  },
-  variants: {},
-  purge: {
-    content: ["./src/**/*.{js,ts,jsx,tsx}"],
-    options: {
-      safelist: ["select-none"],
-    },
-  },
 };
